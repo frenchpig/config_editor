@@ -176,6 +176,7 @@ backups/
 # Development tools
 .antigravityignore
 .cursorignore
+.cursor/
 
 
 # OS specific

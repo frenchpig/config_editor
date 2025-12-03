@@ -15,6 +15,12 @@ else
     echo "Asegúrate de tener las dependencias instaladas"
 fi
 
+# Instalar/actualizar dependencias
+if [ -f "$BASE_DIR/requirements.txt" ]; then
+    echo "Instalando dependencias..."
+    pip install -r requirements.txt --quiet
+fi
+
 echo "Limpiando compilaciones anteriores..."
 rm -rf build/ dist/
 
