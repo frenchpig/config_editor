@@ -1,0 +1,106 @@
+# Configuración de Mako - Daemon de Notificaciones para Wayland
+# Estilo moderno con duración de 5 segundos
+# Documentación: https://github.com/emersion/mako
+
+# ========== APARIENCIA ==========
+
+# Ancho de las notificaciones
+width=380
+
+# Alto máximo de las notificaciones
+height=200
+
+# Márgenes desde los bordes de la pantalla
+margin=30
+
+# ========== COLORES Y ESTILO MODERNO ==========
+
+# Color de fondo - oscuro con transparencia (formato #RRGGBBAA, EB = 92% opacidad)
+background-color=#1a1a2eEB
+
+# Color del texto - claro y legible
+text-color=#e0e0e8
+
+# Color del borde - azul moderno
+border-color=#33ccff
+
+# Tamaño del borde - más sutil
+border-size=1
+
+# Radio de las esquinas - más redondeado para estilo moderno
+border-radius=16
+
+# ========== COMPORTAMIENTO ==========
+
+# Tiempo por defecto: 5 segundos (5000 milisegundos)
+default-timeout=5000
+
+# Ordenar notificaciones - las más recientes arriba
+sort=-time
+
+# ========== ICONOS ==========
+
+# Mostrar iconos si están disponibles
+icons=1
+
+# Tamaño máximo de los iconos - más pequeño y elegante
+max-icon-size=48
+
+# ========== FORMATO DE TEXTO MODERNO ==========
+
+# Formato cuando hay cuerpo completo
+# %a = nombre de la aplicación
+# %s = resumen/título
+# %b = cuerpo del mensaje
+format=<b>%s</b>\n<span color="#a0a0b0">%b</span>
+
+# ========== ESPACIADO Y LAYOUT ==========
+
+# Espaciado interno (padding)
+padding=20
+
+# Número máximo de notificaciones visibles simultáneamente
+max-visible=5
+
+# ========== ESTILOS POR URGENCIA ==========
+
+# Urgencia baja - azul suave, 5 segundos
+[urgency=low]
+border-color=#33ccff
+default-timeout=5000
+background-color=#1a1a2eEB
+text-color=#e0e0e8
+
+# Urgencia normal - verde moderno, 5 segundos
+[urgency=normal]
+border-color=#00ff99
+default-timeout=5000
+background-color=#1a1a2eEB
+text-color=#e0e0e8
+
+# Urgencia crítica - rojo vibrante, permanece hasta que se cierre manualmente
+[urgency=critical]
+border-color=#ff3366
+border-size=2
+default-timeout=0
+background-color=#2a1a1aFA
+text-color=#ffffff
+
+# ========== OTRAS OPCIONES ==========
+
+# No ignorar timeout (las notificaciones desaparecerán automáticamente)
+ignore-timeout=0
+
+# Color del indicador de progreso (para notificaciones con progreso)
+progress-color=#33ccff
+
+# ========== NOTAS DE PERSONALIZACIÓN ==========
+
+# Para cambiar la posición, puedes usar la variable de entorno o iniciar mako con:
+# mako --anchor top-right
+# O agregar en hyprland.conf: exec-once = mako --anchor top-right
+
+# Para probar diferentes estilos, puedes usar:
+# notify-send -u low "Baja" "Notificación de baja urgencia"
+# notify-send -u normal "Normal" "Notificación normal"
+# notify-send -u critical "Crítica" "Notificación crítica"

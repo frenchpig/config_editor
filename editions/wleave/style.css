@@ -1,0 +1,50 @@
+/* Fondo semitransparente para el menú completo */
+window {
+  background-color: rgba(20, 20, 20, 0.85);
+}
+
+/* Estilo de Botones */
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  margin: 4px;
+  min-width: 80px;
+  min-height: 90px;
+}
+
+/* Estilo de iconos de botones */
+button img,
+button svg {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+/* Texto debajo del ícono */
+button label.action-name {
+  font-size: 12px;
+  color: var(--view-fg-color);
+  text-align: center;
+}
+
+/* Tecla / atajo opcional mostrada debajo del texto */
+button label.keybind {
+  font-size: 10px;
+  color: var(--view-fg-color);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* Hover / foco — cambia color de fondo o ícono para resaltar */
+button:hover,
+button:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent-color);
+}
+
+/* Si presionas (click) */
+button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
