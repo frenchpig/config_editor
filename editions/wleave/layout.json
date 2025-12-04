@@ -1,7 +1,7 @@
 {
     "close-on-lost-focus": true,
     "show-keybinds": true,
-  "buttons": [
+    "buttons": [
         {
             "label": "lock",
             "action": "swaylock",
@@ -11,39 +11,39 @@
         },
         {
             "label": "hibernate",
-            "action": "systemctl hibernate",
+            "action": "systemctl --no-block hibernate",
             "text": "Hibernate",
             "keybind": "h",
             "icon": "/usr/share/wleave/icons/hibernate.svg"
         },
         {
             "label": "logout",
-            "action": "loginctl terminate-user $USER",
+            "action": "loginctl terminate-session $XDG_SESSION_ID",
             "text": "Logout",
             "keybind": "e",
             "icon": "/usr/share/wleave/icons/logout.svg"
         },
         {
             "label": "shutdown",
-            "action": "systemctl poweroff",
+            "action": "systemctl --no-block poweroff",
             "text": "Shutdown",
             "keybind": "s",
             "icon": "/usr/share/wleave/icons/shutdown.svg"
         },
         {
             "label": "suspend",
-            "action": "systemctl suspend",
+            "action": "systemctl --no-block suspend",
             "text": "Suspend",
             "keybind": "u",
             "icon": "/usr/share/wleave/icons/suspend.svg"
         },
         {
             "label": "reboot",
-            "action": "systemctl reboot",
+            "action": "systemctl --no-block reboot",
             "text": "Reboot",
             "keybind": "r",
             "icon": "/usr/share/wleave/icons/reboot.svg"
         }
     ],
-  "buttons-per-row": "3"
+    "buttons-per-row": "3"
 }
