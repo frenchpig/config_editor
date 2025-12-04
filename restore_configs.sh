@@ -38,13 +38,25 @@ echo "Restaurando desde: $SRC_DIR"
 
 for src in "$SRC_DIR"/*; do
   name=$(basename "$src")
-  target="$USER_HOME/$CONFIG_DIR/$name"
-  if [ -e "$target" ]; then
-    mv "$target" "${target}.old_$(date +%Y%m%d_%H%M)"
-    echo "Guardado config actual: $target → ${target}.old_…"
+  
+  # Caso especial: dolphinrc debe restaurarse como archivo, no como directorio
+  if [ "$name" = "dolphin" ] && [ -d "$src" ] && [ -f "$src/dolphinrc" ]; then
+    target="$USER_HOME/$CONFIG_DIR/dolphinrc"
+    if [ -e "$target" ]; then
+      mv "$target" "${target}.old_$(date +%Y%m%d_%H%M)"
+      echo "Guardado config actual: $target → ${target}.old_…"
+    fi
+    cp -a "$src/dolphinrc" "$target"
+    echo "Restaurado: $src/dolphinrc → $target"
+  else
+    target="$USER_HOME/$CONFIG_DIR/$name"
+    if [ -e "$target" ]; then
+      mv "$target" "${target}.old_$(date +%Y%m%d_%H%M)"
+      echo "Guardado config actual: $target → ${target}.old_…"
+    fi
+    cp -a "$src" "$target"
+    echo "Restaurado: $src → $target"
   fi
-  cp -a "$src" "$target"
-  echo "Restaurado: $src → $target"
 done
 
 echo "Restauración completada."

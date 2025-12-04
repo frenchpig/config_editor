@@ -58,25 +58,52 @@ for app in "${APPS_ARRAY[@]}"; do
     continue
   fi
   
-  src="$USER_HOME/$CONFIG_DIR/$app"
-  name="$app"
+  # Caso especial: dolphinrc es un archivo, no un directorio
+  if [ "$app" = "dolphin" ]; then
+    src="$USER_HOME/$CONFIG_DIR/dolphinrc"
+    name="dolphin"
+    
+    if [ -e "$src" ]; then
+      # Crear directorio dolphin en backup
+      dest_dir="$BACKUP_ROOT/$DATE/$name"
+      mkdir -p "$dest_dir"
+      dest="$dest_dir/dolphinrc"
+      cp -a "$src" "$dest"
+      echo "Respaldado: $src → $dest"
 
-  if [ -e "$src" ]; then
-    # Copia de respaldo
-    dest="$BACKUP_ROOT/$DATE/$name"
-    cp -a "$src" "$dest"
-    echo "Respaldado: $src → $dest"
-
-    # Copia editable (sobrescribe directamente sin crear backups)
-    edit_dest="$EDITIONS_ROOT/$name"
-    # Eliminar si existe para evitar conflictos
-    if [ -e "$edit_dest" ]; then
-      rm -rf "$edit_dest"
+      # Copia editable
+      edit_dest_dir="$EDITIONS_ROOT/$name"
+      mkdir -p "$edit_dest_dir"
+      edit_dest="$edit_dest_dir/dolphinrc"
+      if [ -e "$edit_dest" ]; then
+        rm -f "$edit_dest"
+      fi
+      cp -a "$src" "$edit_dest"
+      echo "Copiado a editable: $src → $edit_dest"
+    else
+      echo "No existe: $src  — saltando"
     fi
-    cp -a "$src" "$edit_dest"
-    echo "Copiado a editable: $src → $edit_dest"
   else
-    echo "No existe: $src  — saltando"
+    src="$USER_HOME/$CONFIG_DIR/$app"
+    name="$app"
+
+    if [ -e "$src" ]; then
+      # Copia de respaldo
+      dest="$BACKUP_ROOT/$DATE/$name"
+      cp -a "$src" "$dest"
+      echo "Respaldado: $src → $dest"
+
+      # Copia editable (sobrescribe directamente sin crear backups)
+      edit_dest="$EDITIONS_ROOT/$name"
+      # Eliminar si existe para evitar conflictos
+      if [ -e "$edit_dest" ]; then
+        rm -rf "$edit_dest"
+      fi
+      cp -a "$src" "$edit_dest"
+      echo "Copiado a editable: $src → $edit_dest"
+    else
+      echo "No existe: $src  — saltando"
+    fi
   fi
 done
 

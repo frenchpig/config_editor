@@ -169,6 +169,22 @@ class ConfigManagerApp:
             for item in os.listdir(src_dir):
                 src_item = os.path.join(src_dir, item)
                 
+                # Caso especial: dolphinrc debe restaurarse como archivo, no como directorio
+                if item == "dolphin" and os.path.isdir(src_item):
+                    dolphinrc_src = os.path.join(src_item, "dolphinrc")
+                    if os.path.exists(dolphinrc_src):
+                        target_path = os.path.join(self.user_home, self.config_dir, "dolphinrc")
+                        
+                        if os.path.exists(target_path):
+                            timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+                            backup_path = f"{target_path}.old_{timestamp}"
+                            shutil.move(target_path, backup_path)
+                            self.log(f"Backed up existing dolphinrc to {os.path.basename(backup_path)}")
+                        
+                        shutil.copy2(dolphinrc_src, target_path)
+                        self.log(f"Restored: dolphinrc")
+                    continue
+                
                 target_name = item
                 target_path = os.path.join(self.user_home, self.config_dir, target_name)
                 
