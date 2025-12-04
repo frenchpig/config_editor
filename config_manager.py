@@ -22,7 +22,7 @@ class ConfigManagerApp:
         
         self.style.configure("Header.TLabel", font=("Segoe UI", 18, "bold"), foreground="#4ECDC4")
         
-        self.style.configure("TLabelframe", background="#2A4A52", foreground="#E0F7FA", borderwidth=2, relief=tk.RAISED, bordercolor="#458588")
+        self.style.configure("TLabelframe", background="#2A4A52", foreground="#E0F7FA", borderwidth=2, relief=tk.RAISED, bordercolor="#4ECDC4")
         self.style.configure("TLabelframe.Label", background="#2A4A52", foreground="#4ECDC4", font=("Segoe UI", 11, "bold"))
         
         self.style.configure("TCombobox", 
@@ -31,12 +31,12 @@ class ConfigManagerApp:
                              foreground="#E0F7FA",
                              borderwidth=1,
                              relief=tk.SOLID,
-                             bordercolor="#458588")
+                             bordercolor="#4ECDC4")
         self.style.map("TCombobox",
                        fieldbackground=[('readonly', '#3A5A62')],
                        background=[('readonly', '#3A5A62')],
                        foreground=[('readonly', '#E0F7FA')],
-                       bordercolor=[('focus', '#4ECDC4')])
+                       bordercolor=[('focus', '#90EE90')])
 
         # Base paths
         if getattr(sys, 'frozen', False):
@@ -73,31 +73,31 @@ class ConfigManagerApp:
                         command=command,
                         bg="#458588",
                         fg="#E0F7FA",
-                        activebackground="#4ECDC4",
-                        activeforeground="#2A4A52",
+                        activebackground="#90EE90",
+                        activeforeground="#1E3246",
                         font=("Segoe UI", 10, "bold"),
                         relief=tk.FLAT,
                         borderwidth=0,
                         highlightthickness=2,
-                        highlightbackground="#E0F7FA",
-                        highlightcolor="#FFFFFF",
+                        highlightbackground="#4ECDC4",
+                        highlightcolor="#AFEEEE",
                         padx=15,
                         pady=12,
                         cursor="hand2")
         
         def on_enter(e):
-            btn.configure(bg="#4ECDC4", fg="#2A4A52", highlightbackground="#FFFFFF", highlightcolor="#FFFFFF")
-            shadow.configure(bg="#3A5A62", height=3)
+            btn.configure(bg="#4ECDC4", fg="#1E3246", highlightbackground="#AFEEEE", highlightcolor="#ADD8E6")
+            shadow.configure(bg="#90EE90", height=3)
         def on_leave(e):
-            btn.configure(bg="#458588", fg="#E0F7FA", highlightbackground="#E0F7FA", highlightcolor="#E0F7FA")
+            btn.configure(bg="#458588", fg="#E0F7FA", highlightbackground="#4ECDC4", highlightcolor="#AFEEEE")
             shadow.configure(bg="#1E3246", height=2)
         def on_press(e):
-            btn.configure(bg="#74C0FC", fg="#2A4A52", highlightbackground="#FFFFFF")
+            btn.configure(bg="#90EE90", fg="#1E3246", highlightbackground="#ADD8E6")
             shadow.configure(bg="#1E3246", height=1)
         def on_release(e):
-            if btn.cget("bg") == "#74C0FC":
-                btn.configure(bg="#4ECDC4", fg="#2A4A52", highlightbackground="#FFFFFF")
-                shadow.configure(bg="#3A5A62", height=3)
+            if btn.cget("bg") == "#90EE90":
+                btn.configure(bg="#4ECDC4", fg="#1E3246", highlightbackground="#AFEEEE")
+                shadow.configure(bg="#90EE90", height=3)
         
         btn.pack(fill=tk.BOTH, expand=True)
         btn.bind("<Enter>", on_enter)
@@ -118,7 +118,8 @@ class ConfigManagerApp:
                          text="Configuration Manager", 
                          font=("Segoe UI", 18, "bold"), 
                          fg="#4ECDC4", 
-                         bg="#2A4A52")
+                         bg="#2A4A52",
+                         highlightthickness=0)
         header.pack()
 
         # Actions Frame
@@ -155,7 +156,7 @@ class ConfigManagerApp:
         log_frame = ttk.LabelFrame(main_frame, text="Log Output", padding="10")
         log_frame.pack(fill=tk.BOTH, expand=True, pady=10)
 
-        self.log_area = scrolledtext.ScrolledText(log_frame, height=10, bg="#3A5A62", fg="#E0F7FA", font=("Consolas", 9), relief=tk.FLAT, insertbackground="#E0F7FA")
+        self.log_area = scrolledtext.ScrolledText(log_frame, height=10, bg="#3A5A62", fg="#E0F7FA", font=("Consolas", 9), relief=tk.FLAT, insertbackground="#4ECDC4", selectbackground="#458588", selectforeground="#E0F7FA")
         self.log_area.pack(fill=tk.BOTH, expand=True)
 
     def log(self, message):
