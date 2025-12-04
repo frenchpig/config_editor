@@ -1,5 +1,5 @@
 # Configuración de Mako - Daemon de Notificaciones para Wayland
-# Estilo moderno con duración de 5 segundos
+# Estilo Frutiger Aero (compatible con waybar)
 # Documentación: https://github.com/emersion/mako
 
 # ========== APARIENCIA ==========
@@ -13,16 +13,16 @@ height=200
 # Márgenes desde los bordes de la pantalla
 margin=30
 
-# ========== COLORES Y ESTILO MODERNO ==========
+# ========== COLORES Y ESTILO FRUTIGER AERO ==========
 
-# Color de fondo - oscuro con transparencia (formato #RRGGBBAA, EB = 92% opacidad)
-background-color=#1a1a2eEB
+# Color de fondo - pastel teal con transparencia (formato #RRGGBBAA)
+background-color=#AFEEEEE9
 
-# Color del texto - claro y legible
-text-color=#e0e0e8
+# Color del texto - oscuro para contraste con fondo claro
+text-color=#1E3246
 
-# Color del borde - azul moderno
-border-color=#33ccff
+# Color del borde - blanco semitransparente
+border-color=#FFFFFF4D
 
 # Tamaño del borde - más sutil
 border-size=1
@@ -52,7 +52,7 @@ max-icon-size=48
 # %a = nombre de la aplicación
 # %s = resumen/título
 # %b = cuerpo del mensaje
-format=<b>%s</b>\n<span color="#a0a0b0">%b</span>
+format=<b>%s</b>\n<span color="#507878">%b</span>
 
 # ========== ESPACIADO Y LAYOUT ==========
 
@@ -64,27 +64,27 @@ max-visible=5
 
 # ========== ESTILOS POR URGENCIA ==========
 
-# Urgencia baja - azul suave, 5 segundos
+# Urgencia baja - azul pastel, 5 segundos
 [urgency=low]
-border-color=#33ccff
+border-color=#ADD8E6D9
 default-timeout=5000
-background-color=#1a1a2eEB
-text-color=#e0e0e8
+background-color=#ADD8E6D9
+text-color=#1E3246
 
-# Urgencia normal - verde moderno, 5 segundos
+# Urgencia normal - verde pastel, 5 segundos
 [urgency=normal]
-border-color=#00ff99
+border-color=#90EE90BF
 default-timeout=5000
-background-color=#1a1a2eEB
-text-color=#e0e0e8
+background-color=#AFEEEEE9
+text-color=#1E3246
 
-# Urgencia crítica - rojo vibrante, permanece hasta que se cierre manualmente
+# Urgencia crítica - rojo pastel, permanece hasta que se cierre manualmente
 [urgency=critical]
-border-color=#ff3366
+border-color=#FFC8C866
 border-size=2
 default-timeout=0
-background-color=#2a1a1aFA
-text-color=#ffffff
+background-color=#FFC8C866
+text-color=#B43232
 
 # ========== OTRAS OPCIONES ==========
 
@@ -92,7 +92,7 @@ text-color=#ffffff
 ignore-timeout=0
 
 # Color del indicador de progreso (para notificaciones con progreso)
-progress-color=#33ccff
+progress-color=#ADD8E6
 
 # ========== NOTAS DE PERSONALIZACIÓN ==========
 
