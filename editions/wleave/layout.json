@@ -18,7 +18,7 @@
         },
         {
             "label": "logout",
-            "action": "loginctl terminate-session $XDG_SESSION_ID",
+            "action": "hyprctl dispatch exit",
             "text": "Logout",
             "keybind": "e",
             "icon": "/usr/share/wleave/icons/logout.svg"

@@ -1,5 +1,5 @@
 # Configuración de Mako - Daemon de Notificaciones para Wayland
-# Estilo Frutiger Aero (compatible con waybar)
+# Estilo Frutiger Aero 3D (compatible con waybar y wofi)
 # Documentación: https://github.com/emersion/mako
 
 # ========== APARIENCIA ==========
@@ -13,22 +13,23 @@ height=200
 # Márgenes desde los bordes de la pantalla
 margin=30
 
-# ========== COLORES Y ESTILO FRUTIGER AERO ==========
+# ========== COLORES Y ESTILO FRUTIGER AERO 3D ==========
 
 # Color de fondo - pastel teal con transparencia (formato #RRGGBBAA)
-background-color=#AFEEEEE9
+# Simula el efecto 3D con un color más brillante en el centro
+background-color=#AFEEEEB3
 
 # Color del texto - oscuro para contraste con fondo claro
 text-color=#1E3246
 
-# Color del borde - blanco semitransparente
-border-color=#FFFFFF4D
+# Color del borde - blanco semitransparente más visible para efecto 3D
+border-color=#FFFFFF66
 
-# Tamaño del borde - más sutil
-border-size=1
+# Tamaño del borde - más visible para simular profundidad 3D
+border-size=2
 
-# Radio de las esquinas - más redondeado para estilo moderno
-border-radius=16
+# Radio de las esquinas - más redondeado para estilo burbuja 3D
+border-radius=20
 
 # ========== COMPORTAMIENTO ==========
 
@@ -56,34 +57,36 @@ format=<b>%s</b>\n<span color="#507878">%b</span>
 
 # ========== ESPACIADO Y LAYOUT ==========
 
-# Espaciado interno (padding)
-padding=20
+# Espaciado interno (padding) - más generoso para efecto 3D
+padding=24
 
 # Número máximo de notificaciones visibles simultáneamente
 max-visible=5
 
 # ========== ESTILOS POR URGENCIA ==========
 
-# Urgencia baja - azul pastel, 5 segundos
+# Urgencia baja - azul pastel brillante, 5 segundos
 [urgency=low]
-border-color=#ADD8E6D9
+border-color=#ADD8E6E6
+border-size=2
 default-timeout=5000
-background-color=#ADD8E6D9
+background-color=#ADD8E6E6
 text-color=#1E3246
 
-# Urgencia normal - verde pastel, 5 segundos
+# Urgencia normal - verde pastel brillante, 5 segundos
 [urgency=normal]
-border-color=#90EE90BF
+border-color=#90EE90CC
+border-size=2
 default-timeout=5000
-background-color=#AFEEEEE9
+background-color=#AFEEEEB3
 text-color=#1E3246
 
 # Urgencia crítica - rojo pastel, permanece hasta que se cierre manualmente
 [urgency=critical]
-border-color=#FFC8C866
-border-size=2
+border-color=#FFC8C899
+border-size=3
 default-timeout=0
-background-color=#FFC8C866
+background-color=#FFC8C899
 text-color=#B43232
 
 # ========== OTRAS OPCIONES ==========
@@ -104,3 +107,10 @@ progress-color=#ADD8E6
 # notify-send -u low "Baja" "Notificación de baja urgencia"
 # notify-send -u normal "Normal" "Notificación normal"
 # notify-send -u critical "Crítica" "Notificación crítica"
+
+# NOTA: Mako no soporta gradientes CSS ni box-shadow directamente.
+# El efecto 3D se simula mediante:
+# - Border-radius más grande (20px) para forma de burbuja
+# - Border-size más grande (2-3px) para simular profundidad
+# - Colores más brillantes y opacos para efecto de elevación
+# - Padding más generoso para sensación de volumen

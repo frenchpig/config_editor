@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # deploy_configs.sh
 # Despliega todas las configuraciones desde editions/ a ~/.config/
-# Incluye: hypr, wofi, wleave, kitty, waybar, mako, etc.
+# Incluye: hypr, wofi, wleave, kitty, waybar, mako, eww, etc.
 
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -74,6 +74,33 @@ for src in "$SRC_ROOT"/*; do
           fi
         done
       fi
+    fi
+  # Caso especial: gtk-3.0 y gtk-4.0 - eliminar assets/ personalizados
+  elif [ "$name" = "gtk-3.0" ] || [ "$name" = "gtk-4.0" ]; then
+    target="$USER_HOME/$CONFIG_DIR/$name"
+
+    # Hacer backup de config actual si existe
+    if [ -e "$target" ]; then
+      backup="${target}.bak_$(date +%Y%m%d_%H%M)"
+      mv "$target" "$backup"
+      echo "Backup de config existente: $target → $backup"
+    fi
+
+    # Crear directorio destino
+    mkdir -p "$target"
+    
+    # Copiar solo archivos de configuración, no assets/
+    for file in "$src"/*; do
+      if [ -f "$file" ]; then
+        cp -a "$file" "$target/"
+        echo "Instalado: $file → $target/$(basename "$file")"
+      fi
+    done
+    
+    # Eliminar assets/ si existe en destino (resetear a valores por defecto)
+    if [ -d "$target/assets" ]; then
+      rm -rf "$target/assets"
+      echo "Eliminado: $target/assets (resetear a valores por defecto)"
     fi
   else
     target="$USER_HOME/$CONFIG_DIR/$name"

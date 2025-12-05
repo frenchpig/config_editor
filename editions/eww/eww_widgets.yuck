@@ -1,0 +1,48 @@
+;; ====================================
+;; 1. Definición de Variables (POLL)
+;; ====================================
+
+;; Se actualiza cada 1 segundo. Usa 'pamixer' para obtener el volumen actual.
+;; Es importante que el comando solo devuelva un número (el porcentaje).
+(defpoll volume :interval "1s"
+  "pamixer --get-volume | awk '{print $1}'")
+
+;; Se actualiza cada 1 segundo. Verifica si el audio está silenciado.
+;; Devuelve 'true' o 'false'.
+(defpoll is_muted :interval "1s"
+  "pamixer --get-mute")
+
+
+;; ====================================
+;; 2. Definición del Widget
+;; ====================================
+
+;; Este widget es el que llamas en tu eww.yuck
+(defwidget volume_control []
+  (box :class "volume-container"
+    :orientation "v"
+    :space-evenly false
+    :halign "fill"
+
+    ;; Título
+    (label :text "Volumen Principal" :class "title" :halign "start")
+
+    ;; Slider (escala)
+    (scale :value volume         ;; Valor actual: toma el resultado del 'defpoll volume'
+           :orientation "h"      ;; Orientación horizontal
+           :min 0
+           :max 100
+           ;; Comando a ejecutar cuando el valor del slider cambia. 
+           ;; '{}' se reemplaza por el nuevo valor (0-100).
+           :onchange "pamixer --set-volume {}" 
+           :class "volume-scale"
+    )
+
+    ;; Botón de Silencio
+    (button :onclick "pamixer -t" ;; Alternar Silencio
+            :class "mute-button"
+            ;; Mostrar un ícono/texto diferente si está silenciado
+            (label :text {is_muted == "true" ? "🔇 Silenciado" : "🔊 Activo"})
+    )
+  )
+)

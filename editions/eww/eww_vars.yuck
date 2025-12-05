@@ -1,0 +1,3 @@
+(defpoll VOLUME :interval "1s" "~/.config/waybar/scripts/volume_get.sh")
+(defpoll MUTED :interval "1s" "~/.config/waybar/scripts/volume_muted.sh")
+

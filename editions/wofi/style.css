@@ -1,96 +1,212 @@
+/* ============================================
+   Wofi - Frutiger Aero 3D Style (GTK CSS Compatible)
+   Efecto Aero Glass con elementos tipo burbuja 3D brillante
+   ============================================ */
+
+/* ============================================
+   1. ESTILO DE LA VENTANA PRINCIPAL (Aero Glass)
+   ============================================ */
+
 window {
-    border-radius: 15px;
+    /* Fondo con transparencia difuminada para el efecto "Aero Glass" */
     background: linear-gradient(135deg,
-        rgba(42, 74, 82, 0.75) 0%,
-        rgba(58, 90, 98, 0.7) 100%);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+        rgba(140, 180, 200, 0.95) 0%,
+        rgba(120, 200, 120, 0.96) 50%,
+        rgba(140, 200, 200, 0.95) 100%);
+    
+    /* Forma redondeada de la ventana */
+    border-radius: 16px;
+    
+    /* Borde de cristal sutil */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    /* Sombra exterior para simular que la ventana está flotando */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Efecto de desenfoque de fondo acentuado */
+    backdrop-filter: blur(30px) saturate(180%);
 }
+
+/* ============================================
+   2. ESTILO DEL INPUT (CAMPO DE BÚSQUEDA 3D)
+   ============================================ */
 
 #input {
     margin: 10px;
     padding: 12px;
-    border-radius: 10px;
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(224, 247, 250, 0.18) 100%);
-    backdrop-filter: blur(10px);
-    color: #E0F7FA;
+    
+    /* FORMA: REDONDA */
+    border-radius: 12px;
+    
+    /* EFECTO 3D Y BRILLO */
+    
+    /* Degradado: Simula la luz y el volumen (convexidad) */
+    background: linear-gradient(
+        to bottom,
+        rgba(200, 220, 230, 0.95) 0%,      /* Punto de mayor brillo */
+        rgba(190, 210, 220, 0.96) 50%,   /* Color principal medio */
+        rgba(140, 180, 200, 0.95) 100%    /* Sombra inferior/Profundidad */
+    );
+    
+    /* Múltiples Sombras */
+    box-shadow: 
+        /* Sombra Interna: Crea el reflejo de luz superior (efecto 'Glossy') */
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        /* Sombra Externa: Da la sensación de elevación 3D */
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    /* Borde de 'vidrio' sutil */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Color de texto */
+    color: rgba(30, 50, 70, 0.95);
     font-size: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 2px 8px rgba(173, 216, 230, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    
+    /* Efecto de desenfoque acentuado */
+    backdrop-filter: blur(20px) saturate(180%);
+    
+    transition: all 0.3s ease;
 }
 
+/* Input con foco - Más brillante y elevado */
 #input:focus {
+    /* Degradado más intenso al enfocar */
+    background: linear-gradient(
+        to bottom,
+        rgba(210, 225, 235, 0.97) 0%,
+        rgba(200, 215, 225, 0.96) 50%,
+        rgba(150, 190, 210, 0.97) 100%
+    );
+    
+    /* Borde más visible */
     border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 2px 12px rgba(173, 216, 230, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.28) 0%,
-        rgba(224, 247, 250, 0.25) 100%);
-    backdrop-filter: blur(12px);
+    
+    /* Sombras más pronunciadas */
+    box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 4px 12px rgba(173, 216, 230, 0.4);
+    
+    /* Texto más visible */
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+    
+    backdrop-filter: blur(25px) saturate(180%);
 }
+
+/* ============================================
+   3. CONTENEDOR INTERNO
+   ============================================ */
 
 #inner-box {
     margin: 10px;
 }
 
+/* ============================================
+   4. ESTILO DE ENTRADAS (ENTRIES 3D/BURBUJA)
+   ============================================ */
+
 #entry {
     padding: 10px 14px;
     margin-bottom: 6px;
+    
+    /* FORMA: REDONDA */
     border-radius: 12px;
-    font-size: 14px;
-    color: #E0F7FA;
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.15) 0%,
-        rgba(224, 247, 250, 0.12) 50%,
-        rgba(200, 230, 250, 0.1) 100%);
-    backdrop-filter: blur(10px);
+    
+    /* EFECTO 3D Y BRILLO */
+    
+    /* Degradado convexo */
+    background: linear-gradient(
+        to bottom,
+        rgba(200, 220, 230, 0.95) 0%,
+        rgba(190, 210, 220, 0.96) 50%,
+        rgba(140, 180, 200, 0.95) 100%
+    );
+    
+    /* Múltiples Sombras */
+    box-shadow: 
+        /* Sombra Interna: Reflejo de luz superior */
+        inset 0 1px 2px rgba(255, 255, 255, 0.7),
+        /* Sombra Externa: Elevación 3D */
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    
+    /* Borde de 'vidrio' sutil */
     border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 2px 8px rgba(173, 216, 230, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    
+    /* Color de texto */
+    color: rgba(30, 50, 70, 0.95);
+    font-size: 14px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    
+    /* Efecto de desenfoque acentuado */
+    backdrop-filter: blur(18px) saturate(180%);
+    
     transition: all 0.2s ease;
 }
 
+/* Hover para entradas - Más brillante */
 #entry:hover {
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.25) 0%,
-        rgba(224, 247, 250, 0.22) 50%,
-        rgba(200, 230, 250, 0.18) 100%);
-    backdrop-filter: blur(12px);
+    /* Degradado más intenso al pasar el ratón */
+    background: linear-gradient(
+        to bottom,
+        rgba(210, 225, 235, 0.97) 0%,
+        rgba(200, 215, 225, 0.96) 50%,
+        rgba(150, 190, 210, 0.97) 100%
+    );
+    
+    /* Borde más visible */
     border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 12px rgba(173, 216, 230, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    
+    /* Sombras más pronunciadas */
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.9),
+        0 4px 12px rgba(173, 216, 230, 0.3);
+    
+    /* Texto más visible */
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+    
+    backdrop-filter: blur(22px) saturate(180%);
 }
 
+/* Entrada seleccionada - Más brillante y elevada */
 #entry:selected {
-    background: linear-gradient(135deg,
-        rgba(255, 255, 255, 0.35) 0%,
-        rgba(69, 133, 136, 0.5) 50%,
-        rgba(78, 205, 196, 0.4) 100%);
-    backdrop-filter: blur(15px);
-    color: #E0F7FA;
+    /* Degradado más intenso y con colores de acento */
+    background: linear-gradient(
+        to bottom,
+        rgba(220, 235, 245, 0.98) 0%,
+        rgba(150, 190, 210, 0.97) 50%,
+        rgba(170, 220, 230, 0.97) 100%
+    );
+    
+    /* Borde más visible */
     border: 2px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 4px 16px rgba(173, 216, 230, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6),
-                inset 0 -2px 0 rgba(0, 0, 0, 0.15);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    
+    /* Sombras más pronunciadas para efecto de elevación */
+    box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 4px 16px rgba(173, 216, 230, 0.4);
+    
+    /* Color de texto */
+    color: rgba(30, 50, 70, 1);
     font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+    
+    backdrop-filter: blur(25px) saturate(180%);
 }
+
+/* ============================================
+   5. TEXTO
+   ============================================ */
 
 #text {
     color: inherit;
 }
+
+/* ============================================
+   6. SCROLL
+   ============================================ */
 
 #scroll {
     margin: 0;

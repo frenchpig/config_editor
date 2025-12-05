@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 34,
+    "height": 40,
     "spacing": 4,
     "modules-left": [
         "hyprland/workspaces"
@@ -30,7 +30,8 @@
     },
     "clock": {
         "format": "{:%I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip": false,
+        "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/calendar.sh"
     },
     "custom/system": {
         "exec": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/system_stats.sh",
@@ -62,7 +63,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -82,7 +84,8 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "~/scripts/toggle_volume_slider.sh",
+        "on-click-right": "pavucontrol"
     },
     "backlight": {
         "format": "{percent}% {icon}",
@@ -96,6 +99,7 @@
             "",
             "",
             ""
-        ]
+        ],
+        "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/brightness_control.sh"
     }
 }

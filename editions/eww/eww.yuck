@@ -1,0 +1,24 @@
+;; ====================================
+;; 1. INCLUSIONES
+;; ====================================
+
+;; Incluye el archivo que tiene los pollers y el widget
+(include "eww_widgets.yuck") 
+
+;; ====================================
+;; 2. DEFINICIÓN DE LA VENTANA
+;; ====================================
+
+(defwindow volume_control
+  :monitor 0
+  :namespace "eww"
+  :geometry (geometry
+    :x "10px"      
+    :y "50px"      
+    :width "320px"
+    :height "140px"
+    :anchor "top right")
+  
+  ;; ¡IMPORTANTE! Aquí se llama al widget que has definido
+  (volume_control)
+)
