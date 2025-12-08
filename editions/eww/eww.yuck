@@ -4,6 +4,7 @@
 
 ;; Incluye el archivo que tiene los pollers y el widget
 (include "eww_widgets.yuck") 
+(include "eww_bar.yuck") 
 
 ;; ====================================
 ;; 2. DEFINICIÓN DE LA VENTANA
@@ -14,11 +15,47 @@
   :namespace "eww"
   :geometry (geometry
     :x "10px"      
-    :y "50px"      
+    :y "60px"      
     :width "320px"
     :height "140px"
     :anchor "top right")
   
   ;; ¡IMPORTANTE! Aquí se llama al widget que has definido
   (volume_control)
+)
+
+;; ====================================
+;; 3. VENTANA DE CONTROL DE BRILLO
+;; ====================================
+
+(defwindow brightness_control
+  :monitor 0
+  :namespace "eww"
+  :geometry (geometry
+    :x "10px"      
+    :y "60px"      
+    :width "320px"
+    :height "120px"
+    :anchor "top right")
+  
+  ;; Aquí se llama al widget de brillo
+  (brightness_control)
+)
+
+;; ====================================
+;; 4. VENTANA DE PERFIL DE ENERGÍA
+;; ====================================
+
+(defwindow power_profile
+  :monitor 0
+  :namespace "eww"
+  :geometry (geometry
+    :x "10px"      
+    :y "60px"      
+    :width "280px"
+    :height "180px"
+    :anchor "top right")
+  
+  ;; Aquí se llama al widget de perfil de energía
+  (power_profile_control)
 )

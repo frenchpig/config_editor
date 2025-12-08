@@ -2,6 +2,9 @@
     "layer": "top",
     "position": "top",
     "height": 40,
+    "margin-top": 4,
+    "margin-left": 4,
+    "margin-right": 4,
     "spacing": 4,
     "modules-left": [
         "hyprland/workspaces"
@@ -30,7 +33,8 @@
     },
     "clock": {
         "format": "{:%I:%M %p}",
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "{:%d/%m/%y}",
         "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/calendar.sh"
     },
     "custom/system": {
@@ -55,7 +59,7 @@
             "",
             ""
         ],
-        "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/toggle_power.sh"
+        "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/toggle_power_profile.sh"
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -90,16 +94,17 @@
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
-        "on-click": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/brightness_control.sh"
+        "on-click": "~/scripts/toggle_brightness_slider.sh",
+        "on-click-right": "/home/frenchpig/Documentos/Personal/config_editor/editions/waybar/scripts/brightness_control.sh"
     }
 }

@@ -1,0 +1,229 @@
+;; ====================================
+;; EWW BAR - Replicación de Waybar
+;; Con funcionalidad de auto-hide
+;; ====================================
+
+;; ====================================
+;; 1. VARIABLES PARA LA BARRA
+;; ====================================
+
+;; Variable para controlar visibilidad de la barra
+(defvar bar_visible false)
+
+;; Timer para delay antes de ocultar
+(defvar bar_hover_delay 0)
+
+;; Polling de información del sistema
+(defpoll bar_time :interval "1s"
+  "hour=$(date +%H); if [ $hour -ge 12 ]; then ampm='PM'; else ampm='AM'; fi; hour12=$((hour % 12)); [ $hour12 -eq 0 ] && hour12=12; printf '%02d:%s %s' $hour12 $(date +%M) $ampm")
+
+(defpoll bar_date :interval "60s"
+  "date '+%d/%m/%y'")
+
+(defpoll bar_active_workspace :interval "200ms"
+  "~/.config/eww/scripts/get_active_workspace.sh")
+
+(defpoll bar_system_stats :interval "3s"
+  "~/.config/eww/scripts/system_stats.sh")
+
+(defpoll bar_battery :interval "5s"
+  "~/.config/eww/scripts/battery_info.sh")
+
+(defpoll bar_network :interval "10s"
+  "~/.config/eww/scripts/network_info.sh")
+
+(defpoll bar_volume :interval "1s"
+  "~/.config/eww/scripts/volume_info.sh")
+
+(defpoll bar_brightness :interval "2s"
+  "~/.config/eww/scripts/brightness_info.sh")
+
+
+;; ====================================
+;; 2. WIDGETS DE LA BARRA
+;; ====================================
+
+;; Widget de Workspace individual
+(defwidget bar_workspace [num]
+  (button
+    :class {bar_active_workspace == num ? "bar-workspace active" : "bar-workspace"}
+    :onclick "hyprctl dispatch workspace ${num}"
+    :tooltip "Workspace ${num}"
+    (label :text "${num}")
+  )
+)
+
+;; Widget de Workspaces (izquierda)
+;; Muestra siempre 1-5, y solo el workspace activo si es > 5
+(defwidget bar_workspaces []
+  (box :class "bar-workspaces"
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    (bar_workspace :num 1)
+    (bar_workspace :num 2)
+    (bar_workspace :num 3)
+    (bar_workspace :num 4)
+    (bar_workspace :num 5)
+    ;; Workspace dinámico: solo aparece si el activo es > 5
+    (revealer
+      :transition "slideleft"
+      :reveal {bar_active_workspace > 5}
+      :duration "200ms"
+      (bar_workspace :num bar_active_workspace)
+    )
+  )
+)
+
+;; Widget de Reloj (centro)
+(defwidget bar_clock []
+  (button
+    :class "bar-clock"
+    :tooltip "${bar_date}"
+    :onclick "~/.config/eww/scripts/calendar.sh 2>/dev/null || true"
+    (label :text "${bar_time}")
+  )
+)
+
+;; Widget de Sistema
+(defwidget bar_system []
+  (button
+    :class "bar-module bar-system"
+    :tooltip "CPU | RAM | Temp"
+    (label :text "${bar_system_stats}")
+  )
+)
+
+;; Widget de Batería
+(defwidget bar_battery_widget []
+  (button
+    :class "bar-module bar-battery"
+    :onclick "~/.config/eww/scripts/toggle_widget.sh power_profile"
+    :tooltip "Cambiar perfil de energía"
+    (label :text "${bar_battery}")
+  )
+)
+
+;; Widget de Red
+(defwidget bar_network_widget []
+  (button
+    :class "bar-module bar-network"
+    :onclick "~/.config/eww/scripts/rofi-wifi-menu.sh"
+    :onrightclick "sleep 0.1 && nm-connection-editor &"
+    :tooltip "Click: Menú WiFi | Right-click: Configuración"
+    (label :text "${bar_network}")
+  )
+)
+
+;; Widget de Volumen
+(defwidget bar_volume_widget []
+  (button
+    :class "bar-module bar-volume"
+    :onclick "~/.config/eww/scripts/toggle_widget.sh volume_control"
+    :onrightclick "pavucontrol"
+    :tooltip "Control de volumen"
+    (label :text "${bar_volume}")
+  )
+)
+
+;; Widget de Brillo
+(defwidget bar_brightness_widget []
+  (button
+    :class "bar-module bar-brightness"
+    :onclick "~/.config/eww/scripts/toggle_widget.sh brightness_control"
+    :tooltip "Control de brillo"
+    (label :text "${bar_brightness}")
+  )
+)
+
+;; Widget de Módulos de la derecha
+(defwidget bar_right_modules []
+  (box :class "bar-right"
+    :orientation "h"
+    :space-evenly false
+    :halign "end"
+    (bar_system)
+    (bar_battery_widget)
+    (bar_network_widget)
+    (bar_volume_widget)
+    (bar_brightness_widget)
+  )
+)
+
+;; Widget de Contenido de la Barra
+;; Usando centerbox para garantizar centrado correcto
+(defwidget bar_content []
+  (centerbox :class "bar-container"
+    :orientation "h"
+    ;; Izquierda
+    (box :halign "start"
+      (bar_workspaces)
+    )
+    ;; Centro (verdaderamente centrado)
+    (box :halign "center"
+      (bar_clock)
+    )
+    ;; Derecha
+    (box :halign "end"
+      (bar_right_modules)
+    )
+  )
+)
+
+
+;; ====================================
+;; 3. WIDGET PRINCIPAL CON AUTO-HIDE
+;; ====================================
+
+;; Variable para rastrear si el mouse está sobre la barra
+(defvar bar_hover false)
+
+;; Widget principal con lógica de auto-hide mejorada
+;; La barra se mantiene abierta 2 segundos obligatorios
+;; Luego verifica si el mouse sigue encima antes de cerrar
+(defwidget bar_main []
+  (eventbox
+    :class "bar-wrapper"
+    ;; Al entrar: solo abrir si la barra está cerrada
+    :onhover "[ $(eww -c ~/.config/eww get bar_visible) = 'false' ] && eww -c ~/.config/eww update bar_visible=true bar_hover=true || eww -c ~/.config/eww update bar_hover=true"
+    ;; Al salir: marcar hover=false, esperar 2s, verificar y cerrar si sigue fuera
+    :onhoverlost "eww -c ~/.config/eww update bar_hover=false && (sleep 2 && [ $(eww -c ~/.config/eww get bar_hover) = 'false' ] && eww -c ~/.config/eww update bar_visible=false) &"
+    (box
+      :orientation "v"
+      :space-evenly false
+      :valign "start"
+      
+      ;; Contenido de la barra con revealer (despliega hacia abajo desde y=0)
+      (revealer
+        :transition "slidedown"
+        :reveal bar_visible
+        :duration "300ms"
+        (bar_content)
+      )
+    )
+  )
+)
+
+
+;; ====================================
+;; 4. DEFINICIÓN DE LA VENTANA
+;; ====================================
+
+;; La ventana está anclada al tope de la pantalla
+;; Altura de 2px cuando cerrada, se expande con el revealer
+(defwindow bar
+  :monitor 0
+  :namespace "eww-bar"
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  :geometry (geometry
+    :x "0%"
+    :y "0px"
+    :width "100%"
+    :height "2px"
+    :anchor "top center")
+  (bar_main)
+)
+
+

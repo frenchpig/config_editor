@@ -102,6 +102,19 @@ for src in "$SRC_ROOT"/*; do
       rm -rf "$target/assets"
       echo "Eliminado: $target/assets (resetear a valores por defecto)"
     fi
+  # Caso especial: zsh - .zshrc va directamente en $HOME, no en .config
+  elif [ "$name" = "zsh" ] && [ -f "$src/.zshrc" ]; then
+    target="$USER_HOME/.zshrc"
+    
+    # Hacer backup de config actual si existe
+    if [ -e "$target" ]; then
+      backup="${target}.bak_$(date +%Y%m%d_%H%M)"
+      mv "$target" "$backup"
+      echo "Backup de config existente: $target → $backup"
+    fi
+    
+    cp -a "$src/.zshrc" "$target"
+    echo "Instalado: $src/.zshrc → $target"
   else
     target="$USER_HOME/$CONFIG_DIR/$name"
 

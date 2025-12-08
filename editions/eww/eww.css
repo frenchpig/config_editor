@@ -1,7 +1,7 @@
 * {
     all: unset;
     background: transparent;
-    font-family: "Font Awesome 6 Free", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", "Font Awesome 7 Free Solid", sans-serif;
     font-size: 14px;
     font-weight: 500;
 }
@@ -13,14 +13,14 @@ window {
 .container {
     padding: 8px;
     background: linear-gradient(135deg,
-        rgba(173, 216, 230, 0.7) 0%,
-        rgba(144, 238, 144, 0.65) 50%,
-        rgba(175, 238, 238, 0.7) 100%);
+            rgba(173, 216, 230, 0.7) 0%,
+            rgba(144, 238, 144, 0.65) 50%,
+            rgba(175, 238, 238, 0.7) 100%);
     color: rgba(30, 50, 70, 0.95);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .completelytrans {
@@ -31,13 +31,11 @@ window {
     border-radius: 16px;
     padding: 2px 16px;
     margin: 2px 4px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(173, 216, 230, 0.3) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(173, 216, 230, 0.3) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 2px 4px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -48,13 +46,11 @@ window {
 }
 
 .button:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(173, 216, 230, 0.4) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(173, 216, 230, 0.4) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 1.0),
         0 2px 8px rgba(0, 0, 0, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -62,14 +58,12 @@ window {
 }
 
 .button:active {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(173, 216, 230, 0.7) 50%,
-        rgba(200, 255, 255, 0.75) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(173, 216, 230, 0.7) 50%,
+            rgba(200, 255, 255, 0.75) 100%);
     border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 1.0),
         0 4px 12px rgba(173, 216, 230, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -80,13 +74,11 @@ window {
 .daybox {
     border-radius: 12px;
     margin: 5px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(173, 216, 230, 0.3) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(173, 216, 230, 0.3) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 2px 4px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -105,13 +97,11 @@ window {
     margin: 0px;
     padding: 12px;
     font-size: 18px;
-    background: linear-gradient(
-        to bottom,
-        rgba(200, 220, 230, 0.95) 0%,
-        rgba(190, 210, 220, 0.96) 50%,
-        rgba(140, 180, 200, 0.95) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(200, 220, 230, 0.95) 0%,
+            rgba(190, 210, 220, 0.96) 50%,
+            rgba(140, 180, 200, 0.95) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 2px 6px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -149,13 +139,11 @@ window {
     font-size: 16px;
     font-weight: 600;
     padding: 6px 12px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(200, 255, 255, 0.4) 50%,
-        rgba(175, 238, 238, 0.35) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(200, 255, 255, 0.4) 50%,
+            rgba(175, 238, 238, 0.35) 100%);
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 0.9),
         0 3px 6px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -165,14 +153,17 @@ window {
 }
 
 .volume-container {
-    padding: 12px;
-    background: linear-gradient(135deg, 
-        rgba(173, 216, 230, 0.7) 0%,
-        rgba(144, 238, 144, 0.65) 50%,
-        rgba(175, 238, 238, 0.7) 100%);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 16px;
+    background: linear-gradient(135deg,
+            rgba(220, 235, 245, 0.92) 0%,
+            rgba(200, 230, 220, 0.90) 50%,
+            rgba(210, 240, 240, 0.92) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
     min-width: 300px;
 }
 
@@ -191,47 +182,41 @@ scale {
 }
 
 scale trough {
-    background: linear-gradient(
-        to bottom,
-        rgba(200, 220, 230, 0.95) 0%,
-        rgba(190, 210, 220, 0.96) 50%,
-        rgba(140, 180, 200, 0.95) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(200, 220, 230, 0.95) 0%,
+            rgba(190, 210, 220, 0.96) 50%,
+            rgba(140, 180, 200, 0.95) 100%);
     border-radius: 10px;
     min-height: 10px;
     min-width: 300px;
-    box-shadow: 
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.7),
         0 2px 6px rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 scale highlight {
-    background: linear-gradient(
-        to bottom,
-        rgba(173, 216, 230, 0.8) 0%,
-        rgba(144, 238, 144, 0.75) 50%,
-        rgba(175, 238, 238, 0.8) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(173, 216, 230, 0.8) 0%,
+            rgba(144, 238, 144, 0.75) 50%,
+            rgba(175, 238, 238, 0.8) 100%);
     border-radius: 10px;
-    box-shadow: 
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 scale slider {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(173, 216, 230, 0.7) 50%,
-        rgba(200, 255, 255, 0.75) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(173, 216, 230, 0.7) 50%,
+            rgba(200, 255, 255, 0.75) 100%);
     border-radius: 12px;
     min-width: 12px;
     min-height: 12px;
     margin: -1px;
     border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 1.0),
         0 2px 6px rgba(173, 216, 230, 0.4);
 }
@@ -240,13 +225,11 @@ scale slider {
     border-radius: 12px;
     padding: 8px 16px;
     margin-top: 8px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(173, 216, 230, 0.3) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(173, 216, 230, 0.3) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 2px 4px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -257,13 +240,11 @@ scale slider {
 }
 
 .mute-button:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(173, 216, 230, 0.4) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(173, 216, 230, 0.4) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 1.0),
         0 2px 8px rgba(0, 0, 0, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -271,17 +252,338 @@ scale slider {
 }
 
 .mute-button:active {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(173, 216, 230, 0.7) 50%,
-        rgba(200, 255, 255, 0.75) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(173, 216, 230, 0.7) 50%,
+            rgba(200, 255, 255, 0.75) 100%);
     border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 1.0),
         0 4px 12px rgba(173, 216, 230, 0.5);
     color: rgba(30, 50, 70, 1);
     font-weight: 700;
     text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* ====================================
+   ESTILOS PARA WIDGET DE BRILLO
+   ==================================== */
+
+.brightness-container {
+    padding: 16px;
+    background: linear-gradient(135deg,
+            rgba(255, 245, 230, 0.92) 0%,
+            rgba(255, 250, 235, 0.90) 50%,
+            rgba(255, 252, 240, 0.92) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    min-width: 300px;
+}
+
+.brightness-scale trough {
+    background: linear-gradient(to bottom,
+            rgba(255, 240, 220, 0.95) 0%,
+            rgba(255, 235, 210, 0.96) 50%,
+            rgba(255, 220, 180, 0.95) 100%);
+    border-radius: 10px;
+    min-height: 10px;
+    min-width: 300px;
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.7),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.brightness-scale highlight {
+    background: linear-gradient(to bottom,
+            rgba(255, 200, 100, 0.8) 0%,
+            rgba(255, 180, 80, 0.75) 50%,
+            rgba(255, 220, 120, 0.8) 100%);
+    border-radius: 10px;
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.brightness-scale slider {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(255, 223, 186, 0.7) 50%,
+            rgba(255, 250, 205, 0.75) 100%);
+    border-radius: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    margin: -1px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 2px 6px rgba(255, 200, 100, 0.4);
+}
+
+.brightness-indicator {
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin-top: 8px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(255, 223, 186, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(80, 60, 30, 0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* ====================================
+   ESTILOS PARA WIDGET DE PERFIL DE ENERGÍA
+   ==================================== */
+
+.power-container {
+    padding: 12px;
+    background: linear-gradient(135deg,
+            rgba(144, 238, 144, 0.7) 0%,
+            rgba(173, 216, 230, 0.65) 50%,
+            rgba(152, 251, 152, 0.7) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    min-width: 250px;
+}
+
+.power-button {
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin: 4px 0;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(144, 238, 144, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(30, 50, 70, 0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.power-button:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(144, 238, 144, 0.4) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 1.0),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    color: rgba(30, 50, 70, 1);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.power-button.active {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(144, 238, 144, 0.7) 50%,
+            rgba(152, 251, 152, 0.75) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 4px 12px rgba(144, 238, 144, 0.5);
+    color: rgba(30, 50, 70, 1);
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* ====================================
+   ESTILOS PARA EWW BAR (WAYBAR REPLICA)
+   ==================================== */
+
+.bar-wrapper {
+    background: transparent;
+}
+
+.bar-trigger {
+    background: transparent;
+    min-height: 10px;
+}
+
+.bar-container {
+    padding: 4px 8px;
+    margin: 4px;
+    background: linear-gradient(135deg,
+            rgba(140, 180, 200, 0.95) 0%,
+            rgba(120, 200, 120, 0.96) 50%,
+            rgba(140, 200, 200, 0.95) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    color: rgba(30, 50, 70, 0.95);
+}
+
+/* Workspaces */
+.bar-workspaces {
+    background: transparent;
+    margin: 0 8px;
+    padding: 0;
+}
+
+.bar-workspace {
+    border-radius: 16px;
+    padding: 2px 16px;
+    margin: 4px 4px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(173, 216, 230, 0.4) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(30, 50, 70, 0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.bar-workspace:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(173, 216, 230, 0.5) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 1.0),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    color: rgba(30, 50, 70, 1);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+.bar-workspace.active {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(173, 216, 230, 0.7) 50%,
+            rgba(200, 255, 255, 0.75) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 4px 12px rgba(173, 216, 230, 0.5);
+    color: rgba(30, 50, 70, 1);
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* Clock */
+.bar-clock {
+    border-radius: 16px;
+    margin: 4px 16px;
+    padding: 2px 20px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(200, 255, 255, 0.4) 50%,
+            rgba(175, 238, 238, 0.35) 100%);
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 0.9),
+        0 3px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(30, 50, 70, 1);
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.bar-clock:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(200, 255, 255, 0.5) 50%,
+            rgba(175, 238, 238, 0.45) 100%);
+    box-shadow:
+        inset 0 1px 3px rgba(255, 255, 255, 1.0),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* Módulos de la derecha */
+.bar-right {
+    background: transparent;
+    margin: 0 8px;
+    padding: 0;
+}
+
+.bar-module {
+    border-radius: 16px;
+    margin: 4px 4px;
+    padding: 2px 16px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(173, 216, 230, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(30, 50, 70, 0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.bar-module:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(173, 216, 230, 0.4) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 1.0),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    color: rgba(30, 50, 70, 1);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+/* ====================================
+   ESTILOS PARA TOOLTIPS - LIQUID GLASS
+   Estilo inspirado en Apple con fondo
+   claro semitransparente y texto oscuro
+   ==================================== */
+
+tooltip {
+    background: linear-gradient(135deg,
+            rgba(220, 235, 245, 0.92) 0%,
+            rgba(200, 230, 220, 0.90) 50%,
+            rgba(210, 240, 240, 0.92) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    padding: 0;
+}
+
+tooltip label {
+    background: transparent;
+    color: rgba(30, 50, 70, 0.95);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+tooltip.background {
+    background: linear-gradient(135deg,
+            rgba(220, 235, 245, 0.92) 0%,
+            rgba(200, 230, 220, 0.90) 50%,
+            rgba(210, 240, 240, 0.92) 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }

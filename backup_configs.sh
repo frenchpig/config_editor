@@ -83,6 +83,31 @@ for app in "${APPS_ARRAY[@]}"; do
     else
       echo "No existe: $src  — saltando"
     fi
+  # Caso especial: zsh - .zshrc está en $HOME, no en .config
+  elif [ "$app" = "zsh" ]; then
+    src="$USER_HOME/.zshrc"
+    name="zsh"
+    
+    if [ -e "$src" ]; then
+      # Crear directorio zsh en backup
+      dest_dir="$BACKUP_ROOT/$DATE/$name"
+      mkdir -p "$dest_dir"
+      dest="$dest_dir/.zshrc"
+      cp -a "$src" "$dest"
+      echo "Respaldado: $src → $dest"
+
+      # Copia editable
+      edit_dest_dir="$EDITIONS_ROOT/$name"
+      mkdir -p "$edit_dest_dir"
+      edit_dest="$edit_dest_dir/.zshrc"
+      if [ -e "$edit_dest" ]; then
+        rm -f "$edit_dest"
+      fi
+      cp -a "$src" "$edit_dest"
+      echo "Copiado a editable: $src → $edit_dest"
+    else
+      echo "No existe: $src  — saltando"
+    fi
   else
     src="$USER_HOME/$CONFIG_DIR/$app"
     name="$app"

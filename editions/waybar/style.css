@@ -7,6 +7,8 @@
     font-family: "Font Awesome 6 Free", "Roboto", "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
+    background: transparent;
+    border: none;
 }
 
 /* ============================================
@@ -14,27 +16,24 @@
    ============================================ */
 
 window#waybar {
-    /* Fondo con transparencia para el efecto "Aero Glass" */
-    background: linear-gradient(135deg, 
-        rgba(173, 216, 230, 0.7) 0%,
-        rgba(144, 238, 144, 0.65) 50%,
-        rgba(175, 238, 238, 0.7) 100%);
-    
+    /* Fondo con transparencia alta como wofi (0.95-0.96) */
+    background: linear-gradient(135deg,
+            rgba(140, 180, 200, 0.95) 0%,
+            rgba(120, 200, 120, 0.96) 50%,
+            rgba(140, 200, 200, 0.95) 100%);
+
     /* Forma redondeada de la barra */
     border-radius: 12px;
-    
+
     /* Borde de cristal sutil */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    
+
     /* Sombra exterior para simular que la barra está flotando */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    
-    /* Márgenes para separar la barra de los bordes de la pantalla (vertical y horizontal) */
-    margin: 8px 12px;
-    
+
     /* Padding interno - vertical para que los módulos sean más pequeños */
     padding: 4px 8px;
-    
+
     color: rgba(30, 50, 70, 0.95);
 }
 
@@ -69,6 +68,40 @@ button:hover {
    2. ESTILO DE MÓDULOS (BOTONES 3D/BURBUJA)
    ============================================ */
 
+/* Botón de Power - Estilo 3D burbuja */
+#custom-power {
+    border-radius: 16px;
+    margin: 4px 8px;
+    margin-bottom: 6px;
+    padding: 2px 14px;
+
+    background: linear-gradient(to bottom,
+            rgba(255, 200, 200, 0.5) 0%,
+            rgba(255, 180, 180, 0.35) 50%,
+            rgba(220, 150, 150, 0.4) 100%);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(120, 50, 50, 0.95);
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+#custom-power:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 180, 180, 0.7) 0%,
+            rgba(255, 150, 150, 0.5) 50%,
+            rgba(200, 100, 100, 0.5) 100%);
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 1.0),
+        0 2px 8px rgba(0, 0, 0, 0.5);
+    color: rgba(150, 50, 50, 1);
+}
+
 /* Workspaces - Estilo 3D burbuja */
 #workspaces {
     background: transparent;
@@ -81,28 +114,31 @@ button:hover {
     /* FORMA: REDONDA */
     border-radius: 16px;
     padding: 2px 16px;
-    margin: 2px 4px;
-    
+    margin: 4px 8px;
+    margin-bottom: 6px;
+
     /* EFECTO 3D Y BRILLO */
-    
+
     /* 1. Degradado: Simula la luz y el volumen (convexidad) */
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.5) 0%,      /* Punto de mayor brillo */
-        rgba(255, 255, 255, 0.3) 50%,     /* Color principal medio */
-        rgba(173, 216, 230, 0.4) 100%    /* Sombra inferior/Profundidad */
-    );
-    
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            /* Punto de mayor brillo */
+            rgba(255, 255, 255, 0.3) 50%,
+            /* Color principal medio */
+            rgba(173, 216, 230, 0.4) 100%
+            /* Sombra inferior/Profundidad */
+        );
+
     /* 2. Múltiples Sombras */
-    box-shadow: 
+    box-shadow:
         /* Sombra Interna: Crea el reflejo de luz superior (efecto 'Glossy') */
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         /* Sombra Externa: Da la sensación de elevación 3D */
         0 2px 4px rgba(0, 0, 0, 0.3);
-    
+
     /* Borde de 'vidrio' sutil */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    
+
     /* Color de texto */
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
@@ -113,13 +149,11 @@ button:hover {
 /* Estilo al pasar el ratón (Hover) */
 #workspaces button:hover {
     /* Ajustar el degradado y la sombra al pasar el ratón para un efecto interactivo */
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.7) 0%,
-        rgba(255, 255, 255, 0.45) 50%,
-        rgba(173, 216, 230, 0.5) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(173, 216, 230, 0.5) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 1.0),
         0 2px 8px rgba(0, 0, 0, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -128,14 +162,12 @@ button:hover {
 
 /* Workspace activo - Más brillante y elevado */
 #workspaces button.active {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(173, 216, 230, 0.7) 50%,
-        rgba(200, 255, 255, 0.75) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(173, 216, 230, 0.7) 50%,
+            rgba(200, 255, 255, 0.75) 100%);
     border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 1.0),
         0 4px 12px rgba(173, 216, 230, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -145,14 +177,12 @@ button:hover {
 
 /* Workspace urgente */
 #workspaces button.urgent {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 200, 200, 0.5) 0%,
-        rgba(255, 200, 200, 0.4) 50%,
-        rgba(180, 100, 100, 0.3) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 200, 200, 0.5) 0%,
+            rgba(255, 200, 200, 0.4) 50%,
+            rgba(180, 100, 100, 0.3) 100%);
     border: 1px solid rgba(255, 200, 200, 0.4);
-    box-shadow: 
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.6),
         0 2px 4px rgba(180, 50, 50, 0.4);
     color: rgba(180, 50, 50, 1);
@@ -164,9 +194,11 @@ button:hover {
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.6;
     }
+
     100% {
         opacity: 1;
     }
@@ -180,29 +212,28 @@ button:hover {
 #backlight {
     /* FORMA: REDONDA */
     border-radius: 16px;
-    margin: 2px 4px;
+    margin: 4px 8px;
+    margin-bottom: 6px;
     padding: 2px 16px;
-    
+
     /* EFECTO 3D Y BRILLO */
-    
+
     /* Degradado convexo */
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(173, 216, 230, 0.3) 100%
-    );
-    
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(173, 216, 230, 0.3) 100%);
+
     /* Múltiples Sombras */
-    box-shadow: 
+    box-shadow:
         /* Sombra Interna: Reflejo de luz superior */
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         /* Sombra Externa: Elevación 3D */
         0 2px 4px rgba(0, 0, 0, 0.3);
-    
+
     /* Borde de 'vidrio' sutil */
     border: 1px solid rgba(255, 255, 255, 0.2);
-    
+
     /* Color de texto */
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
@@ -216,13 +247,11 @@ button:hover {
 #network:hover,
 #pulseaudio:hover,
 #backlight:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(173, 216, 230, 0.4) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(173, 216, 230, 0.4) 100%);
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 1.0),
         0 2px 8px rgba(0, 0, 0, 0.5);
     color: rgba(30, 50, 70, 1);
@@ -233,29 +262,28 @@ button:hover {
 #clock {
     /* FORMA: REDONDA */
     border-radius: 16px;
-    margin: 2px 8px;
+    margin: 4px 16px;
+    margin-bottom: 6px;
     padding: 2px 20px;
-    
+
     /* EFECTO 3D Y BRILLO */
-    
+
     /* Degradado convexo más pronunciado */
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(200, 255, 255, 0.4) 50%,
-        rgba(175, 238, 238, 0.35) 100%
-    );
-    
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(200, 255, 255, 0.4) 50%,
+            rgba(175, 238, 238, 0.35) 100%);
+
     /* Múltiples Sombras */
-    box-shadow: 
+    box-shadow:
         /* Sombra Interna: Reflejo de luz superior más intenso */
         inset 0 1px 3px rgba(255, 255, 255, 0.9),
         /* Sombra Externa: Elevación 3D más pronunciada */
         0 3px 6px rgba(0, 0, 0, 0.3);
-    
+
     /* Borde de 'vidrio' sutil */
     border: 1px solid rgba(255, 255, 255, 0.3);
-    
+
     /* Color de texto */
     color: rgba(30, 50, 70, 1);
     font-size: 16px;
@@ -266,13 +294,11 @@ button:hover {
 
 /* Hover para clock */
 #clock:hover {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(200, 255, 255, 0.5) 50%,
-        rgba(175, 238, 238, 0.45) 100%
-    );
-    box-shadow: 
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(200, 255, 255, 0.5) 50%,
+            rgba(175, 238, 238, 0.45) 100%);
+    box-shadow:
         inset 0 1px 3px rgba(255, 255, 255, 1.0),
         0 4px 8px rgba(0, 0, 0, 0.4);
     text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
@@ -283,16 +309,14 @@ button:hover {
    ============================================ */
 
 tooltip {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(230, 255, 255, 0.9) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(230, 255, 255, 0.9) 100%);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 16px;
     color: rgba(30, 50, 70, 0.95);
     padding: 6px 10px;
-    box-shadow: 
+    box-shadow:
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
         0 8px 24px rgba(0, 0, 0, 0.2);
 }

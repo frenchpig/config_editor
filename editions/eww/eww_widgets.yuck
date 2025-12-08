@@ -24,25 +24,118 @@
     :space-evenly false
     :halign "fill"
 
-    ;; Título
-    (label :text "Volumen Principal" :class "title" :halign "start")
+    ;; Título con porcentaje
+    (box :orientation "h" :space-evenly false :halign "fill"
+      (label :text "Volumen Principal" :class "title" :halign "start" :hexpand true)
+      (label :text "${volume}%" :class "value-label" :halign "end")
+    )
 
-    ;; Slider (escala)
-    (scale :value volume         ;; Valor actual: toma el resultado del 'defpoll volume'
-           :orientation "h"      ;; Orientación horizontal
+    ;; Slider (escala) - redondea a múltiplos de 5
+    (scale :value volume
+           :orientation "h"
            :min 0
            :max 100
-           ;; Comando a ejecutar cuando el valor del slider cambia. 
-           ;; '{}' se reemplaza por el nuevo valor (0-100).
            :onchange "pamixer --set-volume {}" 
            :class "volume-scale"
     )
 
     ;; Botón de Silencio
-    (button :onclick "pamixer -t" ;; Alternar Silencio
+    (button :onclick "pamixer -t"
             :class "mute-button"
-            ;; Mostrar un ícono/texto diferente si está silenciado
             (label :text {is_muted == "true" ? "🔇 Silenciado" : "🔊 Activo"})
+    )
+  )
+)
+
+
+;; ====================================
+;; 3. Variables para Brillo (POLL)
+;; ====================================
+
+;; Se actualiza cada 1 segundo. Usa 'brightnessctl' para obtener el brillo actual.
+;; Calcula el porcentaje: (current * 100) / max
+(defpoll brightness :interval "1s"
+  "echo $(($(brightnessctl get) * 100 / $(brightnessctl max)))")
+
+
+;; ====================================
+;; 4. Widget de Control de Brillo
+;; ====================================
+
+(defwidget brightness_control []
+  (box :class "brightness-container"
+    :orientation "v"
+    :space-evenly false
+    :halign "fill"
+
+    ;; Título con porcentaje
+    (box :orientation "h" :space-evenly false :halign "fill"
+      (label :text "Brillo de Pantalla" :class "title" :halign "start" :hexpand true)
+      (label :text "${brightness}%" :class "value-label" :halign "end")
+    )
+
+    ;; Slider (escala) - redondea a múltiplos de 5
+    (scale :value brightness
+           :orientation "h"
+           :min 5
+           :max 100
+           :onchange "brightnessctl set {}%"
+           :class "brightness-scale"
+    )
+
+    ;; Indicador de brillo actual
+    (label :text {brightness < 30 ? "🌙 Bajo" : (brightness < 70 ? "☀️ Normal" : "🔆 Alto")}
+           :class "brightness-indicator"
+           :halign "center"
+    )
+  )
+)
+
+
+;; ====================================
+;; 5. Variables para Perfil de Energía (POLL)
+;; ====================================
+
+;; Se actualiza cada 2 segundos. Usa 'powerprofilesctl' para obtener el perfil actual.
+(defpoll power_profile :interval "2s"
+  "powerprofilesctl get")
+
+
+;; ====================================
+;; 6. Widget de Control de Perfil de Energía
+;; ====================================
+
+(defwidget power_profile_control []
+  (box :class "power-container"
+    :orientation "v"
+    :space-evenly false
+    :halign "fill"
+
+    ;; Título
+    (label :text "Modo de Energía" :class "title" :halign "start")
+
+    ;; Botón: Balanced
+    (button :onclick "powerprofilesctl set balanced && eww close power_profile"
+            :class {power_profile == "balanced" ? "power-button active" : "power-button"}
+            (box :orientation "h" :space-evenly false :halign "center"
+              (label :text "⚖️  Balanceado")
+            )
+    )
+
+    ;; Botón: Performance
+    (button :onclick "powerprofilesctl set performance && eww close power_profile"
+            :class {power_profile == "performance" ? "power-button active" : "power-button"}
+            (box :orientation "h" :space-evenly false :halign "center"
+              (label :text "🚀  Rendimiento")
+            )
+    )
+
+    ;; Botón: Power Saver
+    (button :onclick "powerprofilesctl set power-saver && eww close power_profile"
+            :class {power_profile == "power-saver" ? "power-button active" : "power-button"}
+            (box :orientation "h" :space-evenly false :halign "center"
+              (label :text "🔋  Ahorro de Energía")
+            )
     )
   )
 )
