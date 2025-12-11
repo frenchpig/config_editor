@@ -13,12 +13,16 @@
 ;; Timer para delay antes de ocultar
 (defvar bar_hover_delay 0)
 
+;; Variable para tooltip con click
+(defvar tooltip_text "")
+(defvar tooltip_visible false)
+
 ;; Polling de información del sistema
 (defpoll bar_time :interval "1s"
   "hour=$(date +%H); if [ $hour -ge 12 ]; then ampm='PM'; else ampm='AM'; fi; hour12=$((hour % 12)); [ $hour12 -eq 0 ] && hour12=12; printf '%02d:%s %s' $hour12 $(date +%M) $ampm")
 
 (defpoll bar_date :interval "60s"
-  "date '+%d/%m/%y'")
+  "date '+%A, %d de %B %Y'")
 
 (defpoll bar_active_workspace :interval "200ms"
   "~/.config/eww/scripts/get_active_workspace.sh")
@@ -40,21 +44,33 @@
 
 
 ;; ====================================
-;; 2. WIDGETS DE LA BARRA
+;; 2. WIDGET DE TOOLTIP (VENTANA SEPARADA)
 ;; ====================================
 
-;; Widget de Workspace individual
+;; Widget de tooltip - Se muestra en ventana independiente
+(defwidget bar_tooltip_widget []
+  (box :class "bar-tooltip"
+    :halign "center"
+    :visible tooltip_visible
+    (label :text tooltip_text)
+  )
+)
+
+
+;; ====================================
+;; 3. WIDGETS DE LA BARRA
+;; ====================================
+
+;; Widget de Workspace individual (SIN tooltip)
 (defwidget bar_workspace [num]
   (button
     :class {bar_active_workspace == num ? "bar-workspace active" : "bar-workspace"}
     :onclick "hyprctl dispatch workspace ${num}"
-    :tooltip "Workspace ${num}"
     (label :text "${num}")
   )
 )
 
 ;; Widget de Workspaces (izquierda)
-;; Muestra siempre 1-5, y solo el workspace activo si es > 5
 (defwidget bar_workspaces []
   (box :class "bar-workspaces"
     :orientation "h"
@@ -75,63 +91,61 @@
   )
 )
 
-;; Widget de Reloj (centro)
+;; Widget de Reloj - Click izq: muestra tooltip, Click der: calendario
 (defwidget bar_clock []
   (button
     :class "bar-clock"
-    :tooltip "${bar_date}"
-    :onclick "~/.config/eww/scripts/calendar.sh 2>/dev/null || true"
+    :onclick "eww -c ~/.config/eww open bar_tooltip_window && eww -c ~/.config/eww update tooltip_text='${bar_date}' tooltip_visible=true && (sleep 5 && eww -c ~/.config/eww update tooltip_visible=false && eww -c ~/.config/eww close bar_tooltip_window) &"
+    :onrightclick "gnome-calendar 2>/dev/null || gsimplecal 2>/dev/null || zenity --calendar 2>/dev/null &"
     (label :text "${bar_time}")
   )
 )
 
-;; Widget de Sistema
+;; Widget de Sistema - Click izq: tooltip, Click der: monitor de sistema
 (defwidget bar_system []
   (button
     :class "bar-module bar-system"
-    :tooltip "CPU | RAM | Temp"
+    :onclick "eww -c ~/.config/eww open bar_tooltip_window && eww -c ~/.config/eww update tooltip_text='CPU | RAM | Temperatura' tooltip_visible=true && (sleep 5 && eww -c ~/.config/eww update tooltip_visible=false && eww -c ~/.config/eww close bar_tooltip_window) &"
+    :onrightclick "gnome-system-monitor 2>/dev/null || ksysguard 2>/dev/null || xfce4-taskmanager 2>/dev/null || htop -d 10 &"
     (label :text "${bar_system_stats}")
   )
 )
 
-;; Widget de Batería
+;; Widget de Batería - Click izq: tooltip, Click der: perfil de energía
 (defwidget bar_battery_widget []
   (button
     :class "bar-module bar-battery"
-    :onclick "~/.config/eww/scripts/toggle_widget.sh power_profile"
-    :tooltip "Cambiar perfil de energía"
+    :onclick "eww -c ~/.config/eww open bar_tooltip_window && eww -c ~/.config/eww update tooltip_text='Perfil de Energía' tooltip_visible=true && (sleep 5 && eww -c ~/.config/eww update tooltip_visible=false && eww -c ~/.config/eww close bar_tooltip_window) &"
+    :onrightclick "~/.config/eww/scripts/toggle_widget.sh power_profile"
     (label :text "${bar_battery}")
   )
 )
 
-;; Widget de Red
+;; Widget de Red (SIN tooltip)
 (defwidget bar_network_widget []
   (button
     :class "bar-module bar-network"
     :onclick "~/.config/eww/scripts/rofi-wifi-menu.sh"
     :onrightclick "sleep 0.1 && nm-connection-editor &"
-    :tooltip "Click: Menú WiFi | Right-click: Configuración"
     (label :text "${bar_network}")
   )
 )
 
-;; Widget de Volumen
+;; Widget de Volumen (SIN tooltip)
 (defwidget bar_volume_widget []
   (button
     :class "bar-module bar-volume"
     :onclick "~/.config/eww/scripts/toggle_widget.sh volume_control"
-    :onrightclick "pavucontrol"
-    :tooltip "Control de volumen"
+    :onrightclick "pavucontrol &"
     (label :text "${bar_volume}")
   )
 )
 
-;; Widget de Brillo
+;; Widget de Brillo (SIN tooltip)
 (defwidget bar_brightness_widget []
   (button
     :class "bar-module bar-brightness"
     :onclick "~/.config/eww/scripts/toggle_widget.sh brightness_control"
-    :tooltip "Control de brillo"
     (label :text "${bar_brightness}")
   )
 )
@@ -151,7 +165,6 @@
 )
 
 ;; Widget de Contenido de la Barra
-;; Usando centerbox para garantizar centrado correcto
 (defwidget bar_content []
   (centerbox :class "bar-container"
     :orientation "h"
@@ -159,7 +172,7 @@
     (box :halign "start"
       (bar_workspaces)
     )
-    ;; Centro (verdaderamente centrado)
+    ;; Centro
     (box :halign "center"
       (bar_clock)
     )
@@ -172,28 +185,24 @@
 
 
 ;; ====================================
-;; 3. WIDGET PRINCIPAL CON AUTO-HIDE
+;; 4. WIDGET PRINCIPAL CON AUTO-HIDE
 ;; ====================================
 
 ;; Variable para rastrear si el mouse está sobre la barra
 (defvar bar_hover false)
 
-;; Widget principal con lógica de auto-hide mejorada
-;; La barra se mantiene abierta 2 segundos obligatorios
-;; Luego verifica si el mouse sigue encima antes de cerrar
+;; Widget principal - SOLO la barra, sin tooltip
 (defwidget bar_main []
   (eventbox
     :class "bar-wrapper"
-    ;; Al entrar: solo abrir si la barra está cerrada
     :onhover "[ $(eww -c ~/.config/eww get bar_visible) = 'false' ] && eww -c ~/.config/eww update bar_visible=true bar_hover=true || eww -c ~/.config/eww update bar_hover=true"
-    ;; Al salir: marcar hover=false, esperar 2s, verificar y cerrar si sigue fuera
-    :onhoverlost "eww -c ~/.config/eww update bar_hover=false && (sleep 2 && [ $(eww -c ~/.config/eww get bar_hover) = 'false' ] && eww -c ~/.config/eww update bar_visible=false) &"
+    :onhoverlost "eww -c ~/.config/eww update bar_hover=false && eww -c ~/.config/eww close bar_tooltip_window 2>/dev/null; (sleep 2 && [ $(eww -c ~/.config/eww get bar_hover) = 'false' ] && eww -c ~/.config/eww update bar_visible=false) &"
     (box
       :orientation "v"
       :space-evenly false
       :valign "start"
       
-      ;; Contenido de la barra con revealer (despliega hacia abajo desde y=0)
+      ;; Contenido de la barra con revealer
       (revealer
         :transition "slidedown"
         :reveal bar_visible
@@ -206,11 +215,10 @@
 
 
 ;; ====================================
-;; 4. DEFINICIÓN DE LA VENTANA
+;; 5. DEFINICIÓN DE LAS VENTANAS
 ;; ====================================
 
-;; La ventana está anclada al tope de la pantalla
-;; Altura de 2px cuando cerrada, se expande con el revealer
+;; Ventana principal de la barra
 (defwindow bar
   :monitor 0
   :namespace "eww-bar"
@@ -226,4 +234,21 @@
   (bar_main)
 )
 
-
+;; ====================================
+;; VENTANA SEPARADA PARA TOOLTIP
+;; Completamente independiente de la barra
+;; ====================================
+(defwindow bar_tooltip_window
+  :monitor 0
+  :namespace "eww-tooltip"
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  :geometry (geometry
+    :x "0%"
+    :y "45px"
+    :width "100%"
+    :height "40px"
+    :anchor "top center")
+  (bar_tooltip_widget)
+)

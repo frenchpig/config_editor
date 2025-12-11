@@ -1,91 +1,129 @@
+/* ============================================
+   EWW - Frutiger Aero / Windows 7 Style
+   Efecto "Aero Glass" usando paleta Menta/Cian
+   CSS Estándar (sin SCSS)
+   ============================================ */
+
+/* ============================================
+   1. RESET Y TIPOGRAFÍA BASE
+   ============================================ */
+
 * {
     all: unset;
     background: transparent;
-    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", "Font Awesome 7 Free Solid", sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    /* Peso más alto para mejor legibilidad */
+    font-weight: 600;
 }
 
 window {
     background: transparent;
 }
 
+/* ============================================
+   2. CONTENEDOR PRINCIPAL - EFECTO AERO
+   ============================================ */
+
 .container {
     padding: 8px;
-    background: linear-gradient(135deg,
-            rgba(173, 216, 230, 0.7) 0%,
-            rgba(144, 238, 144, 0.65) 50%,
-            rgba(175, 238, 238, 0.7) 100%);
+    /* Gradiente "Horizonte" Aero con corte al 50% */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(173, 216, 230, 0.25) 51%,
+            rgba(144, 238, 144, 0.35) 100%);
     color: rgba(30, 50, 70, 0.95);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    /* Radio moderado estilo Win7 */
+    border-radius: 8px;
+    /* Borde semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Brillo superior + sombra exterior */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .completelytrans {
     background: none;
 }
 
+/* ============================================
+   3. BOTÓN GENÉRICO - EFECTO AERO GLOSSY
+   ============================================ */
+
 .button {
-    border-radius: 16px;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
+    color: rgba(30, 50, 70, 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
     padding: 2px 16px;
     margin: 2px 4px;
+    /* Efecto Aero usando paleta menta/azul */
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(173, 216, 230, 0.3) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(173, 216, 230, 0.4) 51%,
+            rgba(144, 238, 144, 0.3) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(30, 50, 70, 0.95);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
 }
 
 .button:hover {
+    /* Más brillo al pasar el mouse */
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.6) 0%,
-            rgba(255, 255, 255, 0.35) 50%,
-            rgba(173, 216, 230, 0.4) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(173, 216, 230, 0.6) 51%,
+            rgba(144, 238, 144, 0.5) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 1.0),
-        0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .button:active {
+    /* Estado presionado - invertir gradiente */
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(173, 216, 230, 0.7) 50%,
-            rgba(200, 255, 255, 0.75) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(173, 216, 230, 0.5) 0%,
+            rgba(144, 238, 144, 0.4) 50%,
+            rgba(255, 255, 255, 0.4) 51%,
+            rgba(255, 255, 255, 0.6) 100%);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 4px 12px rgba(173, 216, 230, 0.5);
-    color: rgba(30, 50, 70, 1);
-    font-weight: 700;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+        inset 0 2px 4px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(173, 216, 230, 0.6);
 }
 
+/* ============================================
+   4. DAYBOX - CALENDARIO AERO
+   ============================================ */
+
 .daybox {
-    border-radius: 12px;
+    border-radius: 6px;
     margin: 5px;
+    padding: 4px 8px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.65) 0%,
             rgba(255, 255, 255, 0.25) 50%,
-            rgba(173, 216, 230, 0.3) 100%);
+            rgba(173, 216, 230, 0.3) 51%,
+            rgba(175, 238, 238, 0.35) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 0.95);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
 }
+
+/* ============================================
+   5. TEMPERATURA - WIDGET AERO
+   ============================================ */
 
 .temperature-container {
     padding: 12px;
@@ -93,26 +131,27 @@ window {
 }
 
 .temperature {
-    border-radius: 12px;
+    border-radius: 8px;
     margin: 0px;
     padding: 12px;
     font-size: 18px;
     background: linear-gradient(to bottom,
-            rgba(200, 220, 230, 0.95) 0%,
-            rgba(190, 210, 220, 0.96) 50%,
-            rgba(140, 180, 200, 0.95) 100%);
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(173, 216, 230, 0.35) 51%,
+            rgba(144, 238, 144, 0.4) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 6px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .temp-label-header {
     color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
     margin-bottom: 110px;
     font-size: 32px;
     font-weight: 700;
@@ -123,7 +162,7 @@ window {
     margin-bottom: 10px;
     font-weight: 600;
     color: rgba(30, 50, 70, 0.95);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .weather-label {
@@ -131,50 +170,64 @@ window {
     margin-top: 45px;
     font-size: 18px;
     font-weight: 600;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
+/* ============================================
+   6. DATE LABEL - ETIQUETA AERO
+   ============================================ */
+
 .date-label {
-    border-radius: 12px;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: 600;
     padding: 6px 12px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.5) 0%,
-            rgba(200, 255, 255, 0.4) 50%,
-            rgba(175, 238, 238, 0.35) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(175, 238, 238, 0.35) 51%,
+            rgba(144, 238, 144, 0.4) 100%);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 0.9),
-        0 3px 6px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
 }
+
+/* ============================================
+   7. VOLUME CONTAINER - SLIDER AERO
+   ============================================ */
 
 .volume-container {
     padding: 16px;
-    background: linear-gradient(135deg,
-            rgba(220, 235, 245, 0.92) 0%,
-            rgba(200, 230, 220, 0.90) 50%,
-            rgba(210, 240, 240, 0.92) 100%);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Fondo más transparente para ver el blur de Hyprland */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 50%,
+            rgba(173, 216, 230, 0.12) 51%,
+            rgba(144, 238, 144, 0.18) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.12),
-        0 4px 16px rgba(0, 0, 0, 0.08),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.15);
     min-width: 300px;
 }
 
 .title {
-    color: rgba(30, 50, 70, 0.95);
+    color: rgba(30, 50, 70, 1);
     font-size: 16px;
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    text-shadow: none;
     margin-bottom: 8px;
     padding-left: 5px;
 }
+
+/* ============================================
+   8. SCALE (SLIDER) - ESTILO AERO
+   ============================================ */
 
 scale {
     min-height: 10px;
@@ -182,228 +235,240 @@ scale {
 }
 
 scale trough {
+    /* Trough hundido estilo Win7 */
     background: linear-gradient(to bottom,
-            rgba(200, 220, 230, 0.95) 0%,
-            rgba(190, 210, 220, 0.96) 50%,
-            rgba(140, 180, 200, 0.95) 100%);
-    border-radius: 10px;
+            rgba(120, 150, 170, 0.4) 0%,
+            rgba(173, 216, 230, 0.35) 50%,
+            rgba(200, 230, 235, 0.5) 100%);
+    border-radius: 5px;
     min-height: 10px;
     min-width: 300px;
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.7),
-        0 2px 6px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+        inset 0 1px 2px rgba(0, 0, 0, 0.15),
+        0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(100, 130, 150, 0.3);
 }
 
 scale highlight {
+    /* Highlight con gradiente Aero */
     background: linear-gradient(to bottom,
-            rgba(173, 216, 230, 0.8) 0%,
-            rgba(144, 238, 144, 0.75) 50%,
-            rgba(175, 238, 238, 0.8) 100%);
-    border-radius: 10px;
+            rgba(173, 216, 230, 0.9) 0%,
+            rgba(120, 200, 200, 0.85) 50%,
+            rgba(144, 238, 144, 0.8) 100%);
+    border-radius: 5px;
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 1px 3px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 scale slider {
+    /* Slider con efecto botón Aero */
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(173, 216, 230, 0.7) 50%,
-            rgba(200, 255, 255, 0.75) 100%);
-    border-radius: 12px;
-    min-width: 12px;
-    min-height: 12px;
-    margin: -1px;
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(200, 230, 235, 0.6) 51%,
+            rgba(173, 216, 230, 0.7) 100%);
+    border-radius: 6px;
+    min-width: 14px;
+    min-height: 14px;
+    margin: -2px;
+    border: 1px solid rgba(100, 140, 160, 0.4);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 2px 6px rgba(173, 216, 230, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+/* ============================================
+   9. MUTE BUTTON - BOTÓN AERO
+   ============================================ */
+
 .mute-button {
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 8px 16px;
     margin-top: 8px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(173, 216, 230, 0.3) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(173, 216, 230, 0.4) 51%,
+            rgba(144, 238, 144, 0.3) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(30, 50, 70, 0.95);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(30, 50, 70, 1);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: none;
+    transition: all 0.2s ease;
 }
 
 .mute-button:hover {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.6) 0%,
-            rgba(255, 255, 255, 0.35) 50%,
-            rgba(173, 216, 230, 0.4) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(173, 216, 230, 0.6) 51%,
+            rgba(144, 238, 144, 0.5) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 1.0),
-        0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .mute-button:active {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(173, 216, 230, 0.7) 50%,
-            rgba(200, 255, 255, 0.75) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(173, 216, 230, 0.5) 0%,
+            rgba(144, 238, 144, 0.4) 50%,
+            rgba(255, 255, 255, 0.4) 51%,
+            rgba(255, 255, 255, 0.6) 100%);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 4px 12px rgba(173, 216, 230, 0.5);
-    color: rgba(30, 50, 70, 1);
-    font-weight: 700;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+        inset 0 2px 4px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* ====================================
-   ESTILOS PARA WIDGET DE BRILLO
-   ==================================== */
+/* ============================================
+   10. BRIGHTNESS CONTAINER - SLIDER AERO
+   ============================================ */
 
 .brightness-container {
     padding: 16px;
-    background: linear-gradient(135deg,
-            rgba(255, 245, 230, 0.92) 0%,
-            rgba(255, 250, 235, 0.90) 50%,
-            rgba(255, 252, 240, 0.92) 100%);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Fondo más transparente para ver el blur de Hyprland */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 50%,
+            rgba(255, 245, 220, 0.12) 51%,
+            rgba(255, 240, 200, 0.18) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.12),
-        0 4px 16px rgba(0, 0, 0, 0.08),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.15);
     min-width: 300px;
 }
 
 .brightness-scale trough {
     background: linear-gradient(to bottom,
-            rgba(255, 240, 220, 0.95) 0%,
-            rgba(255, 235, 210, 0.96) 50%,
-            rgba(255, 220, 180, 0.95) 100%);
-    border-radius: 10px;
+            rgba(180, 160, 120, 0.3) 0%,
+            rgba(255, 235, 200, 0.35) 50%,
+            rgba(255, 245, 220, 0.5) 100%);
+    border-radius: 5px;
     min-height: 10px;
     min-width: 300px;
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.7),
-        0 2px 6px rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+        inset 0 1px 2px rgba(0, 0, 0, 0.15),
+        0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(180, 160, 120, 0.3);
 }
 
 .brightness-scale highlight {
     background: linear-gradient(to bottom,
-            rgba(255, 200, 100, 0.8) 0%,
-            rgba(255, 180, 80, 0.75) 50%,
-            rgba(255, 220, 120, 0.8) 100%);
-    border-radius: 10px;
+            rgba(255, 220, 140, 0.9) 0%,
+            rgba(255, 200, 100, 0.85) 50%,
+            rgba(255, 180, 80, 0.8) 100%);
+    border-radius: 5px;
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 1px 3px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .brightness-scale slider {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(255, 223, 186, 0.7) 50%,
-            rgba(255, 250, 205, 0.75) 100%);
-    border-radius: 12px;
-    min-width: 12px;
-    min-height: 12px;
-    margin: -1px;
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 245, 220, 0.6) 51%,
+            rgba(255, 235, 200, 0.7) 100%);
+    border-radius: 6px;
+    min-width: 14px;
+    min-height: 14px;
+    margin: -2px;
+    border: 1px solid rgba(180, 160, 120, 0.4);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 2px 6px rgba(255, 200, 100, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .brightness-indicator {
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 8px 16px;
     margin-top: 8px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(255, 223, 186, 0.3) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 235, 200, 0.4) 51%,
+            rgba(255, 220, 160, 0.3) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(80, 60, 30, 0.95);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(30, 50, 70, 1);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+    text-shadow: none;
 }
 
-/* ====================================
-   ESTILOS PARA WIDGET DE PERFIL DE ENERGÍA
-   ==================================== */
+/* ============================================
+   11. POWER CONTAINER - WIDGET AERO
+   ============================================ */
 
 .power-container {
     padding: 12px;
-    background: linear-gradient(135deg,
-            rgba(144, 238, 144, 0.7) 0%,
-            rgba(173, 216, 230, 0.65) 50%,
-            rgba(152, 251, 152, 0.7) 100%);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    /* Fondo más transparente para ver el blur de Hyprland */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 50%,
+            rgba(144, 238, 144, 0.12) 51%,
+            rgba(152, 251, 152, 0.18) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 2px 5px rgba(0, 0, 0, 0.2);
     min-width: 250px;
 }
 
 .power-button {
-    border-radius: 12px;
+    border-radius: 6px;
     padding: 10px 16px;
     margin: 4px 0;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(144, 238, 144, 0.3) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(144, 238, 144, 0.4) 51%,
+            rgba(152, 251, 152, 0.3) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
 }
 
 .power-button:hover {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.6) 0%,
-            rgba(255, 255, 255, 0.35) 50%,
-            rgba(144, 238, 144, 0.4) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(144, 238, 144, 0.6) 51%,
+            rgba(152, 251, 152, 0.5) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 1.0),
-        0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .power-button.active {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(144, 238, 144, 0.7) 50%,
-            rgba(152, 251, 152, 0.75) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(144, 238, 144, 0.5) 0%,
+            rgba(152, 251, 152, 0.4) 50%,
+            rgba(255, 255, 255, 0.4) 51%,
+            rgba(255, 255, 255, 0.6) 100%);
+    border: 2px solid rgba(144, 238, 144, 0.7);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 4px 12px rgba(144, 238, 144, 0.5);
-    color: rgba(30, 50, 70, 1);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 0 8px rgba(144, 238, 144, 0.4);
     font-weight: 700;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
 }
 
-/* ====================================
-   ESTILOS PARA EWW BAR (WAYBAR REPLICA)
-   ==================================== */
+/* ============================================
+   12. EWW BAR - BARRA PRINCIPAL AERO
+   ============================================ */
 
 .bar-wrapper {
     background: transparent;
@@ -415,19 +480,29 @@ scale slider {
 }
 
 .bar-container {
-    padding: 4px 8px;
-    margin: 4px;
-    background: linear-gradient(135deg,
-            rgba(140, 180, 200, 0.95) 0%,
-            rgba(120, 200, 120, 0.96) 50%,
-            rgba(140, 200, 200, 0.95) 100%);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 4px 12px;
+    /* Sin márgenes - ancho completo pegado al borde */
+    margin: 0;
+    /* Fondo Aero Glass MÁS TRANSPARENTE para ver el blur de Hyprland */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 50%,
+            rgba(173, 216, 230, 0.12) 51%,
+            rgba(144, 238, 144, 0.18) 100%);
+    /* Sin bordes redondeados - estilo barra clásica */
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 2px 6px rgba(0, 0, 0, 0.2);
     color: rgba(30, 50, 70, 0.95);
 }
 
-/* Workspaces */
+/* ============================================
+   13. BAR WORKSPACES - BOTONES AERO
+   ============================================ */
+
 .bar-workspaces {
     background: transparent;
     margin: 0 8px;
@@ -435,81 +510,90 @@ scale slider {
 }
 
 .bar-workspace {
-    border-radius: 16px;
-    padding: 2px 16px;
-    margin: 4px 4px;
+    border-radius: 6px;
+    padding: 2px 14px;
+    margin: 3px 3px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.7) 0%,
             rgba(255, 255, 255, 0.3) 50%,
-            rgba(173, 216, 230, 0.4) 100%);
+            rgba(173, 216, 230, 0.4) 51%,
+            rgba(175, 238, 238, 0.35) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: none;
+    transition: all 0.2s ease;
 }
 
 .bar-workspace:hover {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.7) 0%,
-            rgba(255, 255, 255, 0.45) 50%,
-            rgba(173, 216, 230, 0.5) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(173, 216, 230, 0.6) 51%,
+            rgba(175, 238, 238, 0.55) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 1.0),
-        0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .bar-workspace.active {
+    /* Estado activo - Acentuado con gradiente invertido */
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.85) 0%,
-            rgba(173, 216, 230, 0.7) 50%,
-            rgba(200, 255, 255, 0.75) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.9);
+            rgba(173, 216, 230, 0.6) 0%,
+            rgba(144, 238, 144, 0.5) 50%,
+            rgba(255, 255, 255, 0.5) 51%,
+            rgba(255, 255, 255, 0.7) 100%);
+    border: 1px solid rgba(173, 216, 230, 0.7);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 4px 12px rgba(173, 216, 230, 0.5);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 0 8px rgba(173, 216, 230, 0.4);
     color: rgba(30, 50, 70, 1);
     font-weight: 700;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
 }
 
-/* Clock */
+/* ============================================
+   14. BAR CLOCK - RELOJ AERO
+   ============================================ */
+
 .bar-clock {
-    border-radius: 16px;
-    margin: 4px 16px;
-    padding: 2px 20px;
+    border-radius: 6px;
+    margin: 3px 16px;
+    padding: 2px 18px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.5) 0%,
-            rgba(200, 255, 255, 0.4) 50%,
-            rgba(175, 238, 238, 0.35) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(175, 238, 238, 0.4) 51%,
+            rgba(144, 238, 144, 0.35) 100%);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 0.9),
-        0 3px 6px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 1);
     font-size: 16px;
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
+    text-shadow: none;
+    transition: all 0.2s ease;
 }
 
 .bar-clock:hover {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.6) 0%,
-            rgba(200, 255, 255, 0.5) 50%,
-            rgba(175, 238, 238, 0.45) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(175, 238, 238, 0.55) 51%,
+            rgba(144, 238, 144, 0.5) 100%);
     box-shadow:
-        inset 0 1px 3px rgba(255, 255, 255, 1.0),
-        0 4px 8px rgba(0, 0, 0, 0.4);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 1);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Módulos de la derecha */
+/* ============================================
+   15. BAR RIGHT MODULES - MÓDULOS AERO
+   ============================================ */
+
 .bar-right {
     background: transparent;
     margin: 0 8px;
@@ -517,53 +601,114 @@ scale slider {
 }
 
 .bar-module {
-    border-radius: 16px;
-    margin: 4px 4px;
-    padding: 2px 16px;
+    border-radius: 6px;
+    margin: 3px 3px;
+    padding: 2px 14px;
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(173, 216, 230, 0.3) 100%);
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(173, 216, 230, 0.4) 51%,
+            rgba(144, 238, 144, 0.3) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: rgba(30, 50, 70, 0.95);
     font-weight: 600;
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
+    text-shadow: none;
+    transition: all 0.2s ease;
 }
 
 .bar-module:hover {
     background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.6) 0%,
-            rgba(255, 255, 255, 0.35) 50%,
-            rgba(173, 216, 230, 0.4) 100%);
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(173, 216, 230, 0.6) 51%,
+            rgba(144, 238, 144, 0.5) 100%);
     box-shadow:
-        inset 0 1px 2px rgba(255, 255, 255, 1.0),
-        0 2px 8px rgba(0, 0, 0, 0.5);
-    color: rgba(30, 50, 70, 1);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* ====================================
-   ESTILOS PARA TOOLTIPS - LIQUID GLASS
-   Estilo inspirado en Apple con fondo
-   claro semitransparente y texto oscuro
-   ==================================== */
+/* Metric alias para bar-module */
+.metric {
+    border-radius: 6px;
+    margin: 3px 3px;
+    padding: 2px 14px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(173, 216, 230, 0.4) 51%,
+            rgba(144, 238, 144, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(30, 50, 70, 0.95);
+    font-weight: 600;
+    text-shadow: none;
+    transition: all 0.2s ease;
+}
 
+.metric:hover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(173, 216, 230, 0.6) 51%,
+            rgba(144, 238, 144, 0.5) 100%);
+    box-shadow:
+        inset 0 0 5px rgba(255, 255, 255, 1),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   16. CUSTOM BAR TOOLTIP - TOOLTIP PERSONALIZADO
+   ============================================ */
+
+.bar-tooltip {
+    padding: 6px 16px;
+    margin: 0;
+    /* Fondo MÁS OPACO para legibilidad - sigue siendo Aero pero más sólido */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.55) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(173, 216, 230, 0.40) 51%,
+            rgba(144, 238, 144, 0.45) 100%);
+    border-radius: 0;
+    /* Borde completo visible */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* SOLO brillo interior - sin sombra externa que causa problemas con blur */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    /* Texto negro puro para máxima legibilidad */
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 600;
+    /* Sin text-shadow - el fondo opaco hace el trabajo */
+    text-shadow: none;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
+}
+
+/* ============================================
+   17. TOOLTIPS GTK - CRISTAL AERO TRANSPARENTE
+   Selectores completos para GTK/EWW
+   ============================================ */
+
+/* Selector principal para GTK tooltip */
 tooltip {
-    background: linear-gradient(135deg,
-            rgba(220, 235, 245, 0.92) 0%,
-            rgba(200, 230, 220, 0.90) 50%,
-            rgba(210, 240, 240, 0.92) 100%);
-    border-radius: 10px;
+    /* Fondo más transparente para ver el blur de Hyprland */
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.15),
-        0 2px 8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 10px rgba(0, 0, 0, 0.25);
     padding: 0;
+    margin: 0;
 }
 
 tooltip label {
@@ -572,18 +717,96 @@ tooltip label {
     font-size: 13px;
     font-weight: 500;
     padding: 8px 14px;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
 }
 
 tooltip.background {
-    background: linear-gradient(135deg,
-            rgba(220, 235, 245, 0.92) 0%,
-            rgba(200, 230, 220, 0.90) 50%,
-            rgba(210, 240, 240, 0.92) 100%);
-    border-radius: 10px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.15),
-        0 2px 8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Selector alternativo window.tooltip para GTK3/4 */
+window.tooltip {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+window.tooltip label {
+    background: transparent;
+    color: rgba(30, 50, 70, 0.95);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Symbols Nerd Font", sans-serif;
+}
+
+/* Popover para EWW (alternativa a tooltips) */
+popover {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 10px rgba(0, 0, 0, 0.25);
+    padding: 0;
+}
+
+popover label {
+    background: transparent;
+    color: rgba(30, 50, 70, 0.95);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+popover.background {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* EWW tooltip windows específico */
+.eww-tooltip {
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(173, 216, 230, 0.18) 51%,
+            rgba(175, 238, 238, 0.25) 100%);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 10px rgba(0, 0, 0, 0.25);
+    padding: 8px 14px;
+    color: rgba(30, 50, 70, 0.95);
+    font-size: 13px;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
